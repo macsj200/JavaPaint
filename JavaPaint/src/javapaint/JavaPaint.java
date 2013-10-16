@@ -1,16 +1,13 @@
 package javapaint;
 
-import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 public class JavaPaint{
 	public static void main(String[] args){
@@ -28,8 +25,6 @@ class JavaPaintGui extends JFrame{
 	private MouseDetector mouser = null;
 	private String[] availibleUtensils = {"Oval"};
 	private JComboBox utensilSelector = null;
-	private SizeSelector sizer = null;
-	private CardLayout layout = null;
 	private JButton resetButton = null;
 	private JColorChooser colorChooser = null;
 
