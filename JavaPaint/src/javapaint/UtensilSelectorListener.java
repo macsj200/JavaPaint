@@ -16,10 +16,7 @@ public class UtensilSelectorListener implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		JComboBox cb = (JComboBox) arg0.getSource();
         String selected = (String)cb.getSelectedItem();
-		if(selected.equals("Rectangle")){
-			p.setUtensil(new Rectangle(11,11, p.getUtensil().getColor()));
-		}
-		else if(selected.equals("Oval")){
+		if(selected.equals("Oval")){
 			p.setUtensil(new Oval(11,11, p.getUtensil().getColor()));
 		}
 	}
