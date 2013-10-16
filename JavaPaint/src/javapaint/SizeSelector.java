@@ -7,7 +7,11 @@ import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
+/*
+ * I don't want to bother commenting this right now
+ * 
+ * This is not used by anything right now but will be later
+ */
 @SuppressWarnings("serial")
 public class SizeSelector extends JPanel{
 	private JSlider slider = null;
