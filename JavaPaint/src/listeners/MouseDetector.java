@@ -1,9 +1,12 @@
-package javapaint;
+package listeners;
 
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.PointerInfo;
 import java.awt.event.MouseEvent;
+
+import javapaint.PaintPanel;
+
 import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputListener;
 
@@ -11,7 +14,7 @@ import javax.swing.event.MouseInputListener;
 public class MouseDetector implements MouseInputListener{
 	private int[] mouseCoordinates;
 
-	MouseDetector(){
+	public MouseDetector(){
 		mouseCoordinates = new int[2];
 		mouseCoordinates[0] = -1;
 		mouseCoordinates[1] = -1;

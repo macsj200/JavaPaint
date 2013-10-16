@@ -1,6 +1,9 @@
-package javapaint;
+package listeners;
 
 import java.awt.Color;
+
+import javapaint.PaintPanel;
+import javapaint.Utensil;
 
 import javax.swing.colorchooser.DefaultColorSelectionModel;
 import javax.swing.event.ChangeEvent;
@@ -9,7 +12,7 @@ import javax.swing.event.ChangeListener;
 public class ColorPickerListener implements ChangeListener{
 	private Utensil ut = null;
 
-	ColorPickerListener(PaintPanel p){
+	public ColorPickerListener(PaintPanel p){
 		ut = p.getUtensil();
 	}
 

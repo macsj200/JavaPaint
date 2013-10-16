@@ -8,6 +8,10 @@ import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import listeners.ClearListener;
+import listeners.ColorPickerListener;
+import listeners.MouseDetector;
+import listeners.UtensilSelectorListener;
 
 public class JavaPaint{
 	public static void main(String[] args){
@@ -82,7 +86,7 @@ class JavaPaintGui extends JFrame{
 		//sizer = new SizeSelector(drawPanel);
 		
 		utensilSelector = new JComboBox<String>(availableUtensils);
-		utensilSelector.addActionListener(new UtensilSelectorListener(this, drawPanel));
+		utensilSelector.addActionListener(new UtensilSelectorListener(drawPanel));
 		//Listen to utensilSelector
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

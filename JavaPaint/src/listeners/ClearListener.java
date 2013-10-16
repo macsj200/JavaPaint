@@ -1,12 +1,14 @@
-package javapaint;
+package listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javapaint.PaintPanel;
+
 public class ClearListener implements ActionListener{
 	private PaintPanel p = null;
 
-	ClearListener(PaintPanel p){
+	public ClearListener(PaintPanel p){
 		this.p = p;
 	}
 	@Override

@@ -1,13 +1,14 @@
-package javapaint;
+package listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import javapaint.Oval;
+import javapaint.PaintPanel;
 import javax.swing.JComboBox;
 
 public class UtensilSelectorListener implements ActionListener{
 	private PaintPanel p = null;
-	UtensilSelectorListener(JavaPaintGui javaPaintGui, PaintPanel p){
+	public UtensilSelectorListener(PaintPanel p){
 		this.p = p;
 	}
 	@Override
