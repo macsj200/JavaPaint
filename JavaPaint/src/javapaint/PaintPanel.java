@@ -1,6 +1,5 @@
 package javapaint;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -11,9 +10,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class PaintPanel extends JPanel{
 	private Utensil ut = null;
-	private MouseDetector mouser = null;
 	private ArrayList<Utensil> elements = null;
-	private Color currentColor = Color.black;
 
 	PaintPanel(){
 		this.setPreferredSize(new Dimension(500, 500));

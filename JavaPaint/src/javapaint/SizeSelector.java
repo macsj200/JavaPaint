@@ -15,10 +15,6 @@ public class SizeSelector extends JPanel{
 	private Utensil ut = null;
 	private PaintPanel p = null;
 
-	private int utensilMinSize;
-	private int utensilMaxSize;
-	private int utensilInitSize;
-
 	SizeSelector(PaintPanel p){
 		this.p = p;
 		setLayout(new FlowLayout());
