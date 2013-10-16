@@ -9,7 +9,7 @@ public interface Utensil extends Shape{
 	
 	public int[] getCoordinates();
 	
-	public Utensil clonify();
+	public Utensil clone();
 	public void setColor(Color c);
 	public Color getColor();
 }

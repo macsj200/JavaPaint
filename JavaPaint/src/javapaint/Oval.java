@@ -22,7 +22,7 @@ public class Oval extends Ellipse2D.Double implements Utensil{
 	
 	public Oval(Oval o) {
 		//Clone the oval object
-		//Used in clonify() probably bad practice feels yucky
+		//Used in clone() probably bad practice feels yucky
 		
 		this.width = o.getWidth();
 		this.height = o.getHeight();
@@ -44,7 +44,7 @@ public class Oval extends Ellipse2D.Double implements Utensil{
 		return coord;
 	}
 	
-	public Utensil clonify(){
+	public Utensil clone(){
 		return new Oval(this);
 	}
 	
