@@ -33,7 +33,7 @@ class JavaPaintGui extends JFrame{
 	//Array of available utensils (currently unnecessary)
 	//Used to populate utensilSelector
 	
-	private JComboBox utensilSelector = null;
+	private JComboBox<String> utensilSelector = null;
 	//Combo Box to select utensil
 	//Populated by availibleUtensils
 	
@@ -81,7 +81,7 @@ class JavaPaintGui extends JFrame{
 		
 		//sizer = new SizeSelector(drawPanel);
 		
-		utensilSelector = new JComboBox(availableUtensils);
+		utensilSelector = new JComboBox<String>(availableUtensils);
 		utensilSelector.addActionListener(new UtensilSelectorListener(this, drawPanel));
 		//Listen to utensilSelector
 
