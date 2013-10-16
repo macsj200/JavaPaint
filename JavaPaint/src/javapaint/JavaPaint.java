@@ -10,7 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import listeners.ClearListener;
 import listeners.ColorPickerListener;
-import listeners.MouseDetector;
+import listeners.MouseDetectorListener;
 import listeners.UtensilSelectorListener;
 
 public class JavaPaint{
@@ -30,7 +30,7 @@ class JavaPaintGui extends JFrame{
 	private CanvasPanel drawPanel = null;
 	//The panel that is drawn upon
 	
-	private MouseDetector mouser = null;
+	private MouseDetectorListener mouser = null;
 	//The mouse listener (listens for clicks and drags)
 	
 	private String[] availableUtensils = {"Oval"};
@@ -51,7 +51,7 @@ class JavaPaintGui extends JFrame{
 		super("JavaPaint");
 		//Title the window
 		
-		mouser = new MouseDetector();
+		mouser = new MouseDetectorListener();
 		//Instantiate a MouseListener
 		
 		drawPanel = new CanvasPanel();

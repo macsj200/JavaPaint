@@ -11,10 +11,10 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputListener;
 
 
-public class MouseDetector implements MouseInputListener{
+public class MouseDetectorListener implements MouseInputListener{
 	private int[] mouseCoordinates;
 
-	public MouseDetector(){
+	public MouseDetectorListener(){
 		mouseCoordinates = new int[2];
 		mouseCoordinates[0] = -1;
 		mouseCoordinates[1] = -1;
