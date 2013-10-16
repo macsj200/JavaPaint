@@ -13,7 +13,8 @@ public class UtensilSelectorListener implements ActionListener{
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		JComboBox cb = (JComboBox) arg0.getSource();
+		@SuppressWarnings("unchecked")
+		JComboBox<String> cb = (JComboBox<String>) arg0.getSource();
         String selected = (String)cb.getSelectedItem();
 		if(selected.equals("Oval")){
 			p.setUtensil(new Oval(11,11, p.getUtensil().getColor()));
