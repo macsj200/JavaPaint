@@ -3,6 +3,7 @@ package javapaint;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -13,14 +14,20 @@ public class PaintPanel extends JPanel{
 	//Utensil object
 	//Used to paint stuff
 	
+	private BufferedCanvas bufferedCanvas = null;
+	//Use a buffered image to render stuff
+	//TODO add threads :)
+	
 	private ArrayList<Utensil> elements = null;
 	//ArrayList of Utensil objects
 	//Holds everything on the screen
 	//Probably a better way to do this
 
 	PaintPanel(){
-		this.setPreferredSize(new Dimension(500, 500));
 		elements = new ArrayList<Utensil>();
+		this.setPreferredSize(new Dimension(500, 500));
+		bufferedCanvas = new BufferedCanvas(getPreferredSize().width, 
+				getPreferredSize().height, BufferedImage.TYPE_INT_ARGB, elements);
 	}
 
 	public void setUtensil(Utensil ut){
@@ -46,22 +53,10 @@ public class PaintPanel extends JPanel{
 		//Let the normal paintComponent() method do its thing
 		
 		Graphics2D g2d = (Graphics2D) g.create();
-		//Cast a Graphics2D object from g
-		//Graphics2D is better for some reason
-		//Not sure what g.create() does, why not just g?
 		
-		for(int i = 0; i < elements.size(); i = i + 1){
-			//Iterate through the ArrayList and paint every element
-			//GOT to be a better (more efficient) way to do this
-			
-			g2d.setColor(elements.get(i).getColor());
-			//Set the current brush color
-			
-			g2d.fill(elements.get(i));
-			//Fill a Shape object
-		}
+		g2d.drawImage(bufferedCanvas, 0, 0, null);
+		
 		g2d.dispose();
-		//Close the graphics object IDK why
 	}
 
 	public void resetElements() {
@@ -74,5 +69,9 @@ public class PaintPanel extends JPanel{
 		revalidate();
 		repaint();
 		//Repaint the PaintPanel
+	}
+	
+	public BufferedCanvas getBufferedCanvas(){
+		return bufferedCanvas;
 	}
 }
