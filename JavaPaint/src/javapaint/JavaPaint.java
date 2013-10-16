@@ -5,9 +5,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -29,10 +29,11 @@ class JavaPaintGui extends JFrame{
 	String[] availibleUtensils = {"Oval", "Rectangle"};
 	String[] availibleColors = {"black", "blue"};
 	JComboBox utensilSelector = null;
-	JComboBox colorSelector = null;
+	//JComboBox colorSelector = null;
 	SizeSelector sizer = null;
 	CardLayout layout = null;
 	private JButton resetButton = null;
+	private JColorChooser colorChooser = null;
 
 
 	JavaPaintGui(){
@@ -50,13 +51,17 @@ class JavaPaintGui extends JFrame{
 		
 		drawPanel.setUtensil(new Oval(11,11, Color.black));
 		
+		colorChooser = new JColorChooser(Color.black);
+		colorChooser.getSelectionModel().addChangeListener(new ColorPickerListener(drawPanel));
+		
+		
 		//sizer = new SizeSelector(drawPanel);
 		
 		utensilSelector = new JComboBox(availibleUtensils);
 		utensilSelector.addActionListener(new UtensilSelectorListener(this, drawPanel));
 		
-		colorSelector = new JComboBox(availibleColors);
-		colorSelector.addActionListener(new ColorPickerListener(drawPanel));
+		//colorSelector = new JComboBox(availibleColors);
+		//colorSelector.addActionListener(new ColorPickerListener(drawPanel));
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new FlowLayout());
@@ -69,8 +74,9 @@ class JavaPaintGui extends JFrame{
 	private void addComponents(){
 		getContentPane().add(drawPanel);
 		getContentPane().add(utensilSelector);
-		getContentPane().add(colorSelector);
+		//getContentPane().add(colorSelector);
 		getContentPane().add(resetButton);
+		getContentPane().add(colorChooser);
 		//getContentPane().add(sizer);
 	}
 }
