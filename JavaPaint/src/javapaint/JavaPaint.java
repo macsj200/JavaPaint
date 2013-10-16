@@ -26,10 +26,8 @@ public class JavaPaint{
 class JavaPaintGui extends JFrame{
 	private PaintPanel drawPanel = null;
 	MouseDetector mouser = null;
-	String[] availibleUtensils = {"Oval", "Rectangle"};
-	String[] availibleColors = {"black", "blue"};
+	String[] availibleUtensils = {"Oval"};
 	JComboBox utensilSelector = null;
-	//JComboBox colorSelector = null;
 	SizeSelector sizer = null;
 	CardLayout layout = null;
 	private JButton resetButton = null;
@@ -59,9 +57,6 @@ class JavaPaintGui extends JFrame{
 		
 		utensilSelector = new JComboBox(availibleUtensils);
 		utensilSelector.addActionListener(new UtensilSelectorListener(this, drawPanel));
-		
-		//colorSelector = new JComboBox(availibleColors);
-		//colorSelector.addActionListener(new ColorPickerListener(drawPanel));
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new FlowLayout());
@@ -74,7 +69,6 @@ class JavaPaintGui extends JFrame{
 	private void addComponents(){
 		getContentPane().add(drawPanel);
 		getContentPane().add(utensilSelector);
-		//getContentPane().add(colorSelector);
 		getContentPane().add(resetButton);
 		getContentPane().add(colorChooser);
 		//getContentPane().add(sizer);

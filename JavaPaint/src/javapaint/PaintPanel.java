@@ -13,6 +13,7 @@ public class PaintPanel extends JPanel{
 	Utensil ut = null;
 	MouseDetector mouser = null;
 	ArrayList<Utensil> elements = null;
+	Color currentColor = Color.black;
 
 	PaintPanel(){
 		this.setPreferredSize(new Dimension(500, 500));

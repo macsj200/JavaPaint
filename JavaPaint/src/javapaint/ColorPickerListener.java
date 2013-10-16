@@ -1,6 +1,7 @@
 package javapaint;
 
 import java.awt.Color;
+
 import javax.swing.colorchooser.DefaultColorSelectionModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
