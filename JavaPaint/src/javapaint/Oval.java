@@ -6,10 +6,6 @@ import java.awt.geom.Ellipse2D;
 
 @SuppressWarnings("serial")
 public class Oval extends Ellipse2D.Double implements Utensil{
-	private int maxSize;
-	private int minSize;
-	private int initSize;
-	
 	private Color c = null;
 	
 	public Oval(int width, int height, Color c){
@@ -36,22 +32,6 @@ public class Oval extends Ellipse2D.Double implements Utensil{
 	
 	public void setY(int y){
 		this.y = y;
-	}
-
-	@Override
-	public int getMinSize() {
-		return minSize;
-	}
-
-	@Override
-	public int getMaxSize() {
-		return maxSize;
-	}
-
-	@Override
-	public int getInitSize() {
-		// TODO Auto-generated method stub
-		return initSize;
 	}
 	
 	public int[] getCoordinates(){
