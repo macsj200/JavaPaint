@@ -66,8 +66,13 @@ public class PaintPanel extends JPanel{
 
 	public void resetElements() {
 		//Empties the elements ArrayList thereby clearing the screen
+		//Called when clear button is pressed
 		
 		elements.clear();
 		//Possibly inefficient...
+		
+		revalidate();
+		repaint();
+		//Repaint the PaintPanel
 	}
 }

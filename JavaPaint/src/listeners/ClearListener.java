@@ -14,7 +14,5 @@ public class ClearListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		p.resetElements();
-		p.validate();
-		p.repaint();
 	}
 }
