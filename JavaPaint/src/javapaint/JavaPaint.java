@@ -67,11 +67,16 @@ class JavaPaintGui extends JFrame{
 		//Add a reset button that says Clear
 		
 		resetButton.addActionListener(new ClearListener(drawPanel));
+		//Listen to the clear button
 		
 		drawPanel.setUtensil(new Oval(11,11, Color.black));
+		//Initialize the 1st utensil object as black
 		
 		colorChooser = new JColorChooser(Color.black);
+		//Initialize the color chooser on black
+		
 		colorChooser.getSelectionModel().addChangeListener(new ColorPickerListener(drawPanel));
+		//Listen to the color selector
 		
 		
 		//sizer = new SizeSelector(drawPanel);
