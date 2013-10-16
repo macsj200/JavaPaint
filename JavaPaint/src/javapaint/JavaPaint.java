@@ -83,6 +83,7 @@ class JavaPaintGui extends JFrame{
 		
 		utensilSelector = new JComboBox(availableUtensils);
 		utensilSelector.addActionListener(new UtensilSelectorListener(this, drawPanel));
+		//Listen to utensilSelector
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new FlowLayout());
@@ -93,6 +94,9 @@ class JavaPaintGui extends JFrame{
 	}
 
 	private void addComponents(){
+		//Add all of the components :)
+		//Note the use of getContentPane()
+		
 		getContentPane().add(drawPanel);
 		getContentPane().add(utensilSelector);
 		getContentPane().add(resetButton);
