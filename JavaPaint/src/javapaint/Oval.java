@@ -32,27 +32,34 @@ public class Oval extends Ellipse2D.Double implements Utensil{
 	}
 	
 	public void setX(int x){
+		//Set x coordinate
 		this.x = x;
 	}
 	
 	public void setY(int y){
+		//Set y coordinate
 		this.y = y;
 	}
 	
 	public int[] getCoordinates(){
+		//Return an int[] of the x and y coordinates
 		int[] coord = {(int) x, (int) y};
 		return coord;
 	}
 	
 	public Utensil clone(){
+		//Return a copy of the object (a new object)
+		//Probably bad practice
 		return new Oval(this);
 	}
 	
 	public void setColor(Color c){
+		//Set the color of the utensil
 		this.c = c;
 	}
 	
 	public Color getColor(){
+		//Get the color of the utensil
 		return c;
 	}
 }
