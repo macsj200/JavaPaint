@@ -72,7 +72,7 @@ public class MouseDetector implements MouseInputListener{
 		panel.getUtensil().setX(mouseCoordinates[0]);
 		panel.getUtensil().setY(mouseCoordinates[1]);
 		
-		panel.addUtensil(panel.getUtensil().clone());
+		panel.getBufferedCanvas().addUtensil(panel.getUtensil().clone());
 		
 		panel.getBufferedCanvas().renderEverything();
 		panel.revalidate();

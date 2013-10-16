@@ -17,17 +17,11 @@ public class PaintPanel extends JPanel{
 	private BufferedCanvas bufferedCanvas = null;
 	//Use a buffered image to render stuff
 	//TODO add threads :)
-	
-	private ArrayList<Utensil> elements = null;
-	//ArrayList of Utensil objects
-	//Holds everything on the screen
-	//Probably a better way to do this
 
 	PaintPanel(){
-		elements = new ArrayList<Utensil>();
 		this.setPreferredSize(new Dimension(500, 500));
 		bufferedCanvas = new BufferedCanvas(getPreferredSize().width, 
-				getPreferredSize().height, BufferedImage.TYPE_INT_ARGB, elements);
+				getPreferredSize().height, BufferedImage.TYPE_INT_ARGB);
 	}
 
 	public void setUtensil(Utensil ut){
@@ -38,11 +32,6 @@ public class PaintPanel extends JPanel{
 	public Utensil getUtensil(){
 		//Get the current utensil
 		return ut;
-	}
-
-	public void addUtensil(Utensil ut){
-		//Add a utensil to the ArrayList
-		elements.add(ut);
 	}
 
 	public void paintComponent(Graphics g){
@@ -57,18 +46,6 @@ public class PaintPanel extends JPanel{
 		g2d.drawImage(bufferedCanvas, 0, 0, null);
 		
 		g2d.dispose();
-	}
-
-	public void resetElements() {
-		//Empties the elements ArrayList thereby clearing the screen
-		//Called when clear button is pressed
-		
-		elements.clear();
-		//Possibly inefficient...
-		
-		revalidate();
-		repaint();
-		//Repaint the PaintPanel
 	}
 	
 	public BufferedCanvas getBufferedCanvas(){
