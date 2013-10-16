@@ -16,7 +16,7 @@ public class SizeSelector extends JPanel{
 
 	SizeSelector(PaintPanel p){
 		setLayout(new FlowLayout());
-		slider = new JSlider(JSlider.HORIZONTAL, ut.getMinSize(), ut.getMaxSize(), ut.getInitSize());
+		slider = new JSlider(JSlider.HORIZONTAL, 0, 0, 0);
 		textfield = new JTextField();
 		add(textfield);
 		add(slider);
