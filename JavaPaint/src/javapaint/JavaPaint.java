@@ -12,19 +12,31 @@ import javax.swing.JFrame;
 public class JavaPaint{
 	public static void main(String[] args){
 		new JavaPaint();
+		//Instantiate a JavaPaint object (Wrapper for JavaPaintGui)
 	}
 
 	JavaPaint(){
 		new JavaPaintGui();
+		//Just instantiates a JavaPaintGui object
 	}
 }
 
 @SuppressWarnings("serial")
 class JavaPaintGui extends JFrame{
 	private PaintPanel drawPanel = null;
+	//The panel that is drawn upon
+	
 	private MouseDetector mouser = null;
-	private String[] availibleUtensils = {"Oval"};
+	//The mouse listener (listens for clicks and drags)
+	
+	private String[] availableUtensils = {"Oval"};
+	//Array of available utensils (currently unnecessary)
+	//Used to populate utensilSelector
+	
 	private JComboBox utensilSelector = null;
+	//Combo Box to select utensil
+	//Populated by availibleUtensils
+	
 	private JButton resetButton = null;
 	private JColorChooser colorChooser = null;
 
@@ -50,7 +62,7 @@ class JavaPaintGui extends JFrame{
 		
 		//sizer = new SizeSelector(drawPanel);
 		
-		utensilSelector = new JComboBox(availibleUtensils);
+		utensilSelector = new JComboBox(availableUtensils);
 		utensilSelector.addActionListener(new UtensilSelectorListener(this, drawPanel));
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
