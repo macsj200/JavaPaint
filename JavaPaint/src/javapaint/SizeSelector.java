@@ -19,7 +19,7 @@ public class SizeSelector extends JPanel{
 	@SuppressWarnings("unused")
 	private Utensil ut = null;
 
-	SizeSelector(PaintPanel p){
+	SizeSelector(CanvasPanel p){
 		setLayout(new FlowLayout());
 		slider = new JSlider(JSlider.HORIZONTAL, 0, 0, 0);
 		textfield = new JTextField();

@@ -3,14 +3,14 @@ package listeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javapaint.PaintPanel;
+import javapaint.CanvasPanel;
 
 public class ClearListener implements ActionListener{
-	private PaintPanel p = null;
+	private CanvasPanel p = null;
 	//PaintPanel object passed in constructor
 	//Needed to call resetElements()
 
-	public ClearListener(PaintPanel p){
+	public ClearListener(CanvasPanel p){
 		this.p = p;
 	}
 	

@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class PaintPanel extends JPanel{
+public class CanvasPanel extends JPanel{
 	private Utensil ut = null;
 	//Utensil object
 	//Used to paint stuff
@@ -17,7 +17,7 @@ public class PaintPanel extends JPanel{
 	//Use a buffered image to render stuff
 	//TODO add threads :)
 
-	PaintPanel(){
+	CanvasPanel(){
 		this.setPreferredSize(new Dimension(500, 500));
 		bufferedCanvas = new BufferedCanvas(getPreferredSize().width, 
 				getPreferredSize().height, BufferedImage.TYPE_INT_ARGB);

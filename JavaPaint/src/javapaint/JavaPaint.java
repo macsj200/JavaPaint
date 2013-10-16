@@ -27,7 +27,7 @@ public class JavaPaint{
 
 @SuppressWarnings("serial")
 class JavaPaintGui extends JFrame{
-	private PaintPanel drawPanel = null;
+	private CanvasPanel drawPanel = null;
 	//The panel that is drawn upon
 	
 	private MouseDetector mouser = null;
@@ -54,7 +54,7 @@ class JavaPaintGui extends JFrame{
 		mouser = new MouseDetector();
 		//Instantiate a MouseListener
 		
-		drawPanel = new PaintPanel();
+		drawPanel = new CanvasPanel();
 		//Instantiate a PaintPanel
 		
 		drawPanel.setPreferredSize(new Dimension(500, 500));

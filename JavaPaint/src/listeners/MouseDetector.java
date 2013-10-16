@@ -5,7 +5,7 @@ import java.awt.Point;
 import java.awt.PointerInfo;
 import java.awt.event.MouseEvent;
 
-import javapaint.PaintPanel;
+import javapaint.CanvasPanel;
 
 import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputListener;
@@ -68,7 +68,7 @@ public class MouseDetector implements MouseInputListener{
 		SwingUtilities.convertPointFromScreen(point, arg0.getComponent());
 		mouseCoordinates[0] = (int) point.getX();
 		mouseCoordinates[1] = (int) point.getY();
-		PaintPanel panel = (PaintPanel) arg0.getSource();
+		CanvasPanel panel = (CanvasPanel) arg0.getSource();
 		panel.getUtensil().setX(mouseCoordinates[0]);
 		panel.getUtensil().setY(mouseCoordinates[1]);
 		
