@@ -7,9 +7,7 @@ import javax.swing.JComboBox;
 
 public class UtensilSelectorListener implements ActionListener{
 	private PaintPanel p = null;
-	private JavaPaintGui javaPaintGui = null;
 	UtensilSelectorListener(JavaPaintGui javaPaintGui, PaintPanel p){
-		this.javaPaintGui = javaPaintGui;
 		this.p = p;
 	}
 	@Override

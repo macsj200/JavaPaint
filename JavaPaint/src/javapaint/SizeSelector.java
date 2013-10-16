@@ -13,10 +13,8 @@ public class SizeSelector extends JPanel{
 	private JSlider slider = null;
 	private JTextField textfield = null;
 	private Utensil ut = null;
-	private PaintPanel p = null;
 
 	SizeSelector(PaintPanel p){
-		this.p = p;
 		setLayout(new FlowLayout());
 		slider = new JSlider(JSlider.HORIZONTAL, ut.getMinSize(), ut.getMaxSize(), ut.getInitSize());
 		textfield = new JTextField();
