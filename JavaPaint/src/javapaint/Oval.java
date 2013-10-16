@@ -10,7 +10,7 @@ public class Oval extends Ellipse2D.Double implements Utensil{
 	private int minSize;
 	private int initSize;
 	
-	Color c = null;
+	private Color c = null;
 	
 	Oval(int width, int height, Color c){
 		this.width = width;

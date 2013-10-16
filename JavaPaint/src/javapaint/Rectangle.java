@@ -6,7 +6,7 @@ import java.awt.geom.Rectangle2D;;
 
 @SuppressWarnings("serial")
 public class Rectangle extends Rectangle2D.Double implements Utensil{
-	Color c = null;
+	private Color c = null;
 	
 	Rectangle(int width, int height, Color c){
 		this.width = width;

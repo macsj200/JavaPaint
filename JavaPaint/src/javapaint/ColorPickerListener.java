@@ -7,7 +7,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 public class ColorPickerListener implements ChangeListener{
-	Utensil ut = null;
+	private Utensil ut = null;
 
 	ColorPickerListener(PaintPanel p){
 		ut = p.getUtensil();

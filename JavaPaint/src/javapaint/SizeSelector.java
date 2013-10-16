@@ -10,14 +10,14 @@ import javax.swing.event.ChangeListener;
 
 @SuppressWarnings("serial")
 public class SizeSelector extends JPanel{
-	JSlider slider = null;
-	JTextField textfield = null;
-	Utensil ut = null;
-	PaintPanel p = null;
+	private JSlider slider = null;
+	private JTextField textfield = null;
+	private Utensil ut = null;
+	private PaintPanel p = null;
 
-	int utensilMinSize;
-	int utensilMaxSize;
-	int utensilInitSize;
+	private int utensilMinSize;
+	private int utensilMaxSize;
+	private int utensilInitSize;
 
 	SizeSelector(PaintPanel p){
 		this.p = p;

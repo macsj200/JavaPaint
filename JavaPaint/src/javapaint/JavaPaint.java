@@ -25,11 +25,11 @@ public class JavaPaint{
 @SuppressWarnings("serial")
 class JavaPaintGui extends JFrame{
 	private PaintPanel drawPanel = null;
-	MouseDetector mouser = null;
-	String[] availibleUtensils = {"Oval"};
-	JComboBox utensilSelector = null;
-	SizeSelector sizer = null;
-	CardLayout layout = null;
+	private MouseDetector mouser = null;
+	private String[] availibleUtensils = {"Oval"};
+	private JComboBox utensilSelector = null;
+	private SizeSelector sizer = null;
+	private CardLayout layout = null;
 	private JButton resetButton = null;
 	private JColorChooser colorChooser = null;
 

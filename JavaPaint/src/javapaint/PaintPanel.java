@@ -10,10 +10,10 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class PaintPanel extends JPanel{
-	Utensil ut = null;
-	MouseDetector mouser = null;
-	ArrayList<Utensil> elements = null;
-	Color currentColor = Color.black;
+	private Utensil ut = null;
+	private MouseDetector mouser = null;
+	private ArrayList<Utensil> elements = null;
+	private Color currentColor = Color.black;
 
 	PaintPanel(){
 		this.setPreferredSize(new Dimension(500, 500));
