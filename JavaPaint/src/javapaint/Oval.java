@@ -1,5 +1,6 @@
 package javapaint;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.geom.Ellipse2D;
 
@@ -9,24 +10,24 @@ public class Oval extends Ellipse2D.Double implements Utensil{
 	private int minSize;
 	private int initSize;
 	
-	Oval(int width, int height){
+	Color c = null;
+	
+	Oval(int width, int height, Color c){
 		this.width = width;
 		this.height = height;
-		
-		this.minSize = 11;
-		this.maxSize = 40;
-		this.initSize = 11;
+		this.c = c;
 	}
 	
-	Oval(Dimension d){
-		this(d.width, d.height);
+	Oval(Dimension d, Color c){
+		this(d.width, d.height, c);
 	}
 	
-	Oval(Oval o){
+	public Oval(Oval o) {
 		this.width = o.getWidth();
 		this.height = o.getHeight();
 		this.x = o.x;
 		this.y = o.y;
+		this.c = o.c;
 	}
 	
 	public void setX(int x){
@@ -60,5 +61,13 @@ public class Oval extends Ellipse2D.Double implements Utensil{
 	
 	public Utensil clonify(){
 		return new Oval(this);
+	}
+	
+	public void setColor(Color c){
+		this.c = c;
+	}
+	
+	public Color getColor(){
+		return c;
 	}
 }

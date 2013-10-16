@@ -1,5 +1,6 @@
 package javapaint;
 
+import java.awt.Color;
 import java.awt.Shape;
 
 public interface Utensil extends Shape{
@@ -13,4 +14,6 @@ public interface Utensil extends Shape{
 	public int[] getCoordinates();
 	
 	public Utensil clonify();
+	public void setColor(Color c);
+	public Color getColor();
 }

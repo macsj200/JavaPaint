@@ -1,5 +1,6 @@
 package javapaint;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -34,6 +35,7 @@ public class PaintPanel extends JPanel{
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g.create();
 		for(int i = 0; i < elements.size(); i = i + 1){
+			g2d.setColor(elements.get(i).getColor());
 			g2d.fill(elements.get(i));
 		}
 		g2d.dispose();
