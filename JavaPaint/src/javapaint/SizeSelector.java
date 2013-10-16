@@ -12,6 +12,7 @@ import javax.swing.event.ChangeListener;
 public class SizeSelector extends JPanel{
 	private JSlider slider = null;
 	private JTextField textfield = null;
+	@SuppressWarnings("unused")
 	private Utensil ut = null;
 
 	SizeSelector(PaintPanel p){
