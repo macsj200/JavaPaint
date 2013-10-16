@@ -7,6 +7,7 @@ import java.awt.geom.Ellipse2D;
 @SuppressWarnings("serial")
 public class Oval extends Ellipse2D.Double implements Utensil{
 	private Color c = null;
+	//Color of the oval
 	
 	public Oval(int width, int height, Color c){
 		this.width = width;
@@ -15,10 +16,14 @@ public class Oval extends Ellipse2D.Double implements Utensil{
 	}
 	
 	Oval(Dimension d, Color c){
+		//Call base constructor
 		this(d.width, d.height, c);
 	}
 	
 	public Oval(Oval o) {
+		//Clone the oval object
+		//Used in clonify() probably bad practice feels yucky
+		
 		this.width = o.getWidth();
 		this.height = o.getHeight();
 		this.x = o.x;
