@@ -38,20 +38,34 @@ class JavaPaintGui extends JFrame{
 	//Populated by availibleUtensils
 	
 	private JButton resetButton = null;
+	//Button to clear PaintPanel (Empties the ArrayList)
+	
 	private JColorChooser colorChooser = null;
-
+	//Color selector for utensil
 
 	JavaPaintGui(){
 		super("JavaPaint");
+		//Title the window
+		
 		mouser = new MouseDetector();
+		//Instantiate a MouseListener
 		
 		drawPanel = new PaintPanel();
+		//Instantiate a PaintPanel
+		
 		drawPanel.setPreferredSize(new Dimension(500, 500));
+		
+		
 		drawPanel.addMouseListener(mouser);
 		drawPanel.addMouseMotionListener(mouser);
+		//Add listener for click (MouseListener) and drag (MouseMotionListener)
+		
 		drawPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+		//Draw a border around the drawing area
 		
 		resetButton = new JButton("Clear");
+		//Add a reset button that says Clear
+		
 		resetButton.addActionListener(new ClearListener(drawPanel));
 		
 		drawPanel.setUtensil(new Oval(11,11, Color.black));
