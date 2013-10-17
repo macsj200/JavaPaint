@@ -4,6 +4,8 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import javax.swing.SwingUtilities;
+
 public class BufferedCanvas extends BufferedImage{
 	//BufferedCanvas
 
@@ -22,8 +24,16 @@ public class BufferedCanvas extends BufferedImage{
 		g2.setBackground(Color.white);
 		render();
 	}
-
+	
 	public void render(){
+		SwingUtilities.invokeLater(new Runnable(){
+			public void run(){
+				singleRender();
+			}
+		});
+	}
+
+	public void singleRender(){
 		Graphics2D g2d = (Graphics2D) g2.create();
 		//Make a new context
 		
