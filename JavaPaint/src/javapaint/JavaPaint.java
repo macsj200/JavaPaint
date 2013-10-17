@@ -20,6 +20,7 @@ import listeners.UtensilSelectorListener;
 
 public class JavaPaint{
 	public static void main(String[] args){
+		//Test branch commit
 		new JavaPaint();
 		//Instantiate a JavaPaint object (Wrapper for JavaPaintGui)
 	}
