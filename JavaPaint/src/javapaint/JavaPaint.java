@@ -8,6 +8,10 @@ import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
 import listeners.ClearListener;
 import listeners.ColorPickerListener;
 import listeners.MouseDetectorListener;
@@ -27,6 +31,11 @@ public class JavaPaint{
 
 @SuppressWarnings("serial")
 class JavaPaintGui extends JFrame{
+	private JMenuBar menuBar = null;
+	private JMenu fileMenu = null;
+	
+	private JMenuItem[] fileMenuItems = null;
+	
 	private CanvasPanel drawPanel = null;
 	//The panel that is drawn upon
 	
@@ -50,6 +59,14 @@ class JavaPaintGui extends JFrame{
 	JavaPaintGui(){
 		super("JavaPaint");
 		//Title the window
+		
+		menuBar = new JMenuBar();
+		
+		fileMenuItems = new JMenuItem[1];
+		fileMenuItems[0] = new JMenuItem("Save");
+		
+		fileMenu = new JMenu("File");
+		
 		
 		mouser = new MouseDetectorListener();
 		//Instantiate a MouseListener
@@ -100,7 +117,13 @@ class JavaPaintGui extends JFrame{
 	private void addComponents(){
 		//Add all of the components :)
 		//Note the use of getContentPane()
+		for(int i = 0; i < fileMenuItems.length; i++){
+			fileMenu.add(fileMenuItems[i]);
+		}
 		
+		menuBar.add(fileMenu);
+		
+		//getContentPane().add(menuBar);
 		getContentPane().add(drawPanel);
 		getContentPane().add(utensilSelector);
 		getContentPane().add(resetButton);
