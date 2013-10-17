@@ -15,6 +15,7 @@ import javax.swing.JMenuItem;
 import listeners.ClearListener;
 import listeners.ColorPickerListener;
 import listeners.MouseDetectorListener;
+import listeners.SaveListener;
 import listeners.UtensilSelectorListener;
 
 public class JavaPaint{
@@ -35,6 +36,8 @@ class JavaPaintGui extends JFrame{
 	private JMenu fileMenu = null;
 	
 	private JMenuItem[] fileMenuItems = null;
+	
+	private JButton saveButton = null;
 	
 	private CanvasPanel drawPanel = null;
 	//The panel that is drawn upon
@@ -108,6 +111,9 @@ class JavaPaintGui extends JFrame{
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new FlowLayout());
+		
+		saveButton = new JButton("Save");
+		saveButton.addActionListener(new SaveListener(this, drawPanel.getBufferedCanvas()));
 
 		addComponents();
 		pack();
@@ -127,6 +133,7 @@ class JavaPaintGui extends JFrame{
 		getContentPane().add(drawPanel);
 		getContentPane().add(utensilSelector);
 		getContentPane().add(resetButton);
+		getContentPane().add(saveButton);
 		getContentPane().add(colorChooser);
 		//getContentPane().add(sizer);
 	}
