@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javapaint.Oval;
 import javapaint.CanvasPanel;
-import javapaint.Rectangle;
 
 import javax.swing.JComboBox;
 
@@ -22,7 +21,8 @@ public class UtensilSelectorListener implements ActionListener{
 			p.setUtensil(new Oval(11,11, p.getUtensil().getColor()));
 		}
 		else if(selected.equals("Rectangle")){
-			p.setUtensil(new Rectangle(11,11, p.getUtensil().getColor()));
+			//Do nothing (Unimplemented)
+			//p.setUtensil(new Rectangle(11,11, p.getUtensil().getColor()));
 		}
 	}
 

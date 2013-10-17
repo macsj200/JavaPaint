@@ -45,7 +45,7 @@ class JavaPaintGui extends JFrame{
 	private MouseDetectorListener mouser = null;
 	//The mouse listener (listens for clicks and drags)
 	
-	private String[] availableUtensils = {"Oval", "Rectangle"};
+	private String[] availableUtensils = {"Oval"};
 	//Array of available utensils (currently unnecessary)
 	//Used to populate utensilSelector
 	
