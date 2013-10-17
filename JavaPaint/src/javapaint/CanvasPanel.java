@@ -27,6 +27,18 @@ public class CanvasPanel extends JPanel{
 		//Set the current utensil
 		this.ut = ut;
 	}
+	
+	public void rerender(){
+		bufferedCanvas.render();
+		revalidate();
+		repaint();
+	}
+	
+	public void resetElements(){
+		bufferedCanvas.resetElements();
+		revalidate();
+		repaint();
+	}
 
 	public Utensil getUtensil(){
 		//Get the current utensil

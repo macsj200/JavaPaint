@@ -74,8 +74,6 @@ public class MouseDetectorListener implements MouseInputListener{
 		
 		panel.getBufferedCanvas().addUtensil(panel.getUtensil().clone());
 		
-		panel.getBufferedCanvas().render();
-		panel.revalidate();
-		panel.repaint();
+		panel.rerender();
 	}
 }

@@ -16,10 +16,7 @@ public class ClearListener implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		p.getBufferedCanvas().resetElements();
+		p.resetElements();
 		//On button click (action) clear the PaintPanel
-		
-		p.revalidate();
-		p.repaint();
 	}
 }
