@@ -14,13 +14,16 @@ import javax.swing.event.ChangeListener;
 
 public class ColorPickerListener implements ChangeListener{
 	private Utensil ut = null;
+	private CanvasPanel canvas;
 
-	public ColorPickerListener(CanvasPanel p){
-		ut = p.getUtensil();
+	public ColorPickerListener(CanvasPanel canvas){
+		this.canvas = canvas;
+		ut = canvas.getUtensil();
 	}
 
 	public void setColor(Color c){
 		ut.setColor(c);
+		canvas.setUtensil(ut.clone());
 	}
 
 	@Override
