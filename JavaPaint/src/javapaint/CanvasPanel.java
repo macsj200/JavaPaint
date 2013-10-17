@@ -29,7 +29,7 @@ public class CanvasPanel extends JPanel{
 	}
 	
 	public void rerender(){
-		bufferedCanvas.render();
+		bufferedCanvas.threadedRender();
 		revalidate();
 		repaint();
 	}
