@@ -1,5 +1,6 @@
 package javapaint;
 
+@SuppressWarnings("serial")
 public class UnsupportedShapeException extends Exception {
 	private String shape = null;
 	
