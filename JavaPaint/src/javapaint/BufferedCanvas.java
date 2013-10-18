@@ -12,39 +12,64 @@ public class BufferedCanvas extends BufferedImage{
 	private ArrayList<Utensil> elements = null;
 	//ArrayList of Utensil objects
 	//Holds everything on the screen
-	//Probably a better way to do this
 
 	Graphics2D g2 = null;
+	//Graphics2D object used for drawing primitives
+	//This is the primary object, don't use directly for drawing
+	//Instead clone and dispose of clone
 	
 	private Color background = null;
+	//Background of canvas
 
 	public BufferedCanvas(int width, int height, int imageType) {
+		//Primary constructor
+		//IDK what imageType is, it's required for BufferedImage
+		
 		super(width, height, imageType);
+		//Call BufferedImage constructor
+		
 		elements = new ArrayList<Utensil>();
+		//Create the ArrayList to hold Utensil objects
 
 		background = Color.white;
+		//Set background to white by default
+		//Retrieved to set color of eraser
+		
 		g2 = createGraphics();
+		//Create a Graphics2D object for the BufferedImage
+		
 		g2.setBackground(background);
+		//Set the background of the BufferedImage
+		
 		threadedRender();
+		//Do initial rendering work
 	}
 
 	public void threadedRender(){
+		//Wrapper, just invokes singleThreadRender with invokeLater
+		
 		SwingUtilities.invokeLater(new Runnable(){
+			//Necessary framework for Swing concurrency
 			public void run(){
 				singleThreadRender();
+				//Primary rendering logic
 			}
 		});
 	}
 	
 	public Color getBackground(){
+		//Get the background color
+		//Used for eraser color
+		
 		return background;
 	}
 	
 	private void singleThreadRender(){
 		Graphics2D g2d = (Graphics2D) g2.create();
-		//Make a new context
+		//Make a new context so we can dispose when finished
 
 		if(elements.size() == 0){
+			//If elements is empty clear the canvas
 			g2d.clearRect(0, 0, getWidth(), getHeight());
 		}
 
