@@ -18,8 +18,12 @@ public @SuppressWarnings("serial")
 class JavaPaintGui extends JFrame{
 	
 	private static String[] defaultAvailibleUtensils = {"Oval", "Rectangle", "Eraser"};
+	//The default available utensils
+	//A list of the stuff that's implemented so far
+	//Only used in parameterless constructor
 	
 	private JButton saveButton = null;
+	//JButton that opens save dialog
 
 	private CanvasPanel canvasPanel = null;
 	//The panel that is drawn upon
@@ -27,9 +31,8 @@ class JavaPaintGui extends JFrame{
 	private MouseDetectorListener mouser = null;
 	//The mouse listener (listens for clicks and drags)
 
-	//private String[] availableUtensils = {"Oval", "Rectangle", "Eraser"};
 	private String[] availableUtensils = null;
-	//Array of available utensils (currently unnecessary)
+	//Array of available utensils
 	//Used to populate utensilSelector
 
 	private JComboBox<String> utensilSelector = null;
@@ -43,17 +46,24 @@ class JavaPaintGui extends JFrame{
 	//Color selector for utensil
 	
 	JavaPaintGui(){
+		//Parameter-less constructor
+		//Calls primary constructor with default parameters
+		
 		this(defaultAvailibleUtensils);
 	}
 
 	JavaPaintGui(String[] availibleUtensils){
+		//Primary constructor
+		//Parameter specifies what to populate UtensilSelector with
+		
 		super("JavaPaint");
 		//Title the window
 
 		this.availableUtensils = availibleUtensils;
 
 		canvasPanel = new CanvasPanel();
-		//Instantiate a PaintPanel
+		//Instantiate a CanvasPanel
+		//Container for BufferedCanvas
 		
 		utensilSelector = new JComboBox<String>(availableUtensils);
 		//Listen to utensilSelector
@@ -61,6 +71,7 @@ class JavaPaintGui extends JFrame{
 		canvasPanel.setPreferredSize(new Dimension(500, 500));
 
 		mouser = new MouseDetectorListener(this);
+		//Create a new MouseDetectorListener
 
 		canvasPanel.addMouseListener(mouser);
 		canvasPanel.addMouseMotionListener(mouser);
@@ -70,7 +81,7 @@ class JavaPaintGui extends JFrame{
 		//Draw a border around the drawing area
 		
 		utensilSelector = new JComboBox<String>(availableUtensils);
-		//Listen to utensilSelector
+		//Create a JComboBox to pick utensils
 
 		resetButton = new JButton("Clear");
 		//Add a reset button that says Clear
@@ -80,9 +91,6 @@ class JavaPaintGui extends JFrame{
 
 		colorChooser = new JColorChooser(Color.black);
 		//Initialize the color chooser on black
-
-
-		//sizer = new SizeSelector(canvasPanel);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new FlowLayout());
@@ -96,14 +104,17 @@ class JavaPaintGui extends JFrame{
 	}
 	
 	public String getSelectedUtensil(){
+		//Get currently selected element from utensilSelector
 		return (String) utensilSelector.getSelectedItem();
 	}
 	
 	public Color getSelectedColor(){
+		//Get currently selected color from the color selector
 		return colorChooser.getColor();
 	}
 	
 	public CanvasPanel getCanvasPanel(){
+		//Get a reference to the canvasPanel
 		return canvasPanel;
 	}
 
