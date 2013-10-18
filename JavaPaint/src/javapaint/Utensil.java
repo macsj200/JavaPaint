@@ -16,7 +16,7 @@ public class Utensil{
 	private int[] coordinates = null;
 	private Color color = null;
 	
-	public Utensil(String shapeString, int[] coordinates, Color color){
+	public Utensil(String shapeString, int[] coordinates, Color color) throws UnsupportedShapeException{
 		this.color = color;
 		this.shapeString = shapeString;
 		this.coordinates = coordinates;
@@ -28,9 +28,12 @@ public class Utensil{
 			shapeObject = new Rectangle2D.Double(coordinates[0], coordinates[1],
 					11, 11);
 		}
+		else{
+			throw new UnsupportedShapeException(shapeString);
+		}
 	}
 	
-	public Utensil(String shapeString, int[] coordinates){
+	public Utensil(String shapeString, int[] coordinates) throws UnsupportedShapeException{
 		this(shapeString, coordinates, Color.black);
 	}
 	
