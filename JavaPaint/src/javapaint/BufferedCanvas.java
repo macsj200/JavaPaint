@@ -101,8 +101,4 @@ public class BufferedCanvas extends BufferedImage{
 
 		threadedRender();
 	}
-
-	public ArrayList<Utensil> getElements(){
-		return elements;
-	}
 }
