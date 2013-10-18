@@ -24,6 +24,11 @@ public class CanvasPanel extends JPanel{
 
 	public void loadUtensil(Utensil utensil){
 		//Load in a new utensil
+		setUtensil(utensil);
+		bufferedCanvas.addUtensil(utensil);
+	}
+	
+	private void setUtensil(Utensil utensil){
 		this.utensil = utensil;
 	}
 	
