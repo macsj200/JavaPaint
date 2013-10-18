@@ -6,17 +6,17 @@ import java.awt.event.ActionListener;
 import javapaint.CanvasPanel;
 
 public class ClearListener implements ActionListener{
-	private CanvasPanel p = null;
-	//PaintPanel object passed in constructor
+	private CanvasPanel canvasPanel = null;
+	//CanvasPanel object passed in constructor
 	//Needed to call resetElements()
 
-	public ClearListener(CanvasPanel p){
-		this.p = p;
+	public ClearListener(CanvasPanel canvasPanel){
+		this.canvasPanel = canvasPanel;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		p.resetElements();
+		canvasPanel.resetElements();
 		//On button click (action) clear the PaintPanel
 	}
 }
