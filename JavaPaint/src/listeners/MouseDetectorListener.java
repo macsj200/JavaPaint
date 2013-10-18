@@ -6,15 +6,19 @@ import java.awt.PointerInfo;
 import java.awt.event.MouseEvent;
 
 import javapaint.CanvasPanel;
+import javapaint.JavaPaintGui;
+import javapaint.Utensil;
 
 import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputListener;
 
 
 public class MouseDetectorListener implements MouseInputListener{
-	private int[] mouseCoordinates;
+	private int[] mouseCoordinates = null;
+	private JavaPaintGui javaPaintGui = null;
 
-	public MouseDetectorListener(){
+	public MouseDetectorListener(JavaPaintGui javaPaintGui){
+		this.javaPaintGui = javaPaintGui;
 		mouseCoordinates = new int[2];
 		mouseCoordinates[0] = -1;
 		mouseCoordinates[1] = -1;
@@ -69,11 +73,9 @@ public class MouseDetectorListener implements MouseInputListener{
 		mouseCoordinates[0] = (int) point.getX();
 		mouseCoordinates[1] = (int) point.getY();
 		CanvasPanel panel = (CanvasPanel) arg0.getSource();
-		panel.getUtensil().setX(mouseCoordinates[0]);
-		panel.getUtensil().setY(mouseCoordinates[1]);
-		
-		panel.setUtensil(panel.getUtensil().clone());
-		//panel.getBufferedCanvas().addUtensil(panel.getUtensil().clone());
+		panel.setUtensil(new Utensil(javaPaintGui.getSelectedUtensil(), 
+				mouseCoordinates, javaPaintGui.getSelectedColor()));
+		panel.getBufferedCanvas().addUtensil(panel.getUtensil());
 		
 		panel.rerender();
 	}

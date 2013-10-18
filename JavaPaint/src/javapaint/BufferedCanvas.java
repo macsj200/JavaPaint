@@ -13,18 +13,18 @@ public class BufferedCanvas extends BufferedImage{
 	//ArrayList of Utensil objects
 	//Holds everything on the screen
 	//Probably a better way to do this
-	
+
 	Graphics2D g2 = null;
 
 	public BufferedCanvas(int width, int height, int imageType) {
 		super(width, height, imageType);
 		elements = new ArrayList<Utensil>();
-		
+
 		g2 = createGraphics();
 		g2.setBackground(Color.white);
 		threadedRender();
 	}
-	
+
 	public void threadedRender(){
 		SwingUtilities.invokeLater(new Runnable(){
 			public void run(){
@@ -36,7 +36,7 @@ public class BufferedCanvas extends BufferedImage{
 	private void singleThreadRender(){
 		Graphics2D g2d = (Graphics2D) g2.create();
 		//Make a new context
-		
+
 		if(elements.size() == 0){
 			g2d.clearRect(0, 0, getWidth(), getHeight());
 		}
@@ -48,8 +48,10 @@ public class BufferedCanvas extends BufferedImage{
 			g2d.setColor(elements.get(i).getColor());
 			//Set the current brush color
 
-			g2d.fill(elements.get(i));
-			//Fill a Shape object
+			if(elements.get(i).getCoordinates()[0] != -1){
+				g2d.fill(elements.get(i).getShape());
+				//Fill a Shape object
+			}
 		}
 		g2d.dispose();
 		//Close the graphics object

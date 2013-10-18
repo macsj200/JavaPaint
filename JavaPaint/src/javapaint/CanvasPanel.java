@@ -25,7 +25,6 @@ public class CanvasPanel extends JPanel{
 
 	public void setUtensil(Utensil ut){
 		//Set the current utensil
-		bufferedCanvas.addUtensil(ut);
 		this.ut = ut;
 	}
 	

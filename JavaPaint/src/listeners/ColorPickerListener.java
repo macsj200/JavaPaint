@@ -3,6 +3,7 @@ package listeners;
 import java.awt.Color;
 
 import javapaint.CanvasPanel;
+import javapaint.JavaPaintGui;
 import javapaint.Utensil;
 
 import javax.swing.colorchooser.DefaultColorSelectionModel;
@@ -13,17 +14,17 @@ import javax.swing.event.ChangeListener;
  */
 
 public class ColorPickerListener implements ChangeListener{
-	private Utensil ut = null;
-	private CanvasPanel canvas;
+	private JavaPaintGui javaPaintGui = null;
 
-	public ColorPickerListener(CanvasPanel canvas){
-		this.canvas = canvas;
-		ut = canvas.getUtensil();
+	public ColorPickerListener(JavaPaintGui javaPaintGui){
+		this.javaPaintGui = javaPaintGui;
 	}
 
 	public void setColor(Color c){
-		ut.setColor(c);
-		canvas.setUtensil(ut.clone());
+		int[] coordinates = {-1, -1};
+		javaPaintGui.getCanvasPanel().setUtensil(new Utensil(javaPaintGui.getSelectedUtensil(), 
+				coordinates, javaPaintGui.getSelectedColor()));
+		javaPaintGui.getCanvasPanel().getBufferedCanvas().addUtensil(javaPaintGui.getCanvasPanel().getUtensil());
 	}
 
 	@Override
