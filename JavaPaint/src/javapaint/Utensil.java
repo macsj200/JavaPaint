@@ -34,6 +34,14 @@ public class Utensil{
 		this(shapeString, coordinates, Color.black);
 	}
 	
+	public Utensil(String shapeString){
+		this(shapeString, null, Color.black);
+	}
+	
+	public Utensil(String shapeString, Color color){
+		this(shapeString, null, color);
+	}
+	
 	public int[] getCoordinates(){
 		return coordinates;
 	}

@@ -14,10 +14,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import listeners.ClearListener;
-import listeners.ColorPickerListener;
 import listeners.MouseDetectorListener;
 import listeners.SaveListener;
-import listeners.UtensilSelectorListener;
 
 public @SuppressWarnings("serial")
 class JavaPaintGui extends JFrame{
@@ -63,7 +61,6 @@ class JavaPaintGui extends JFrame{
 		//Instantiate a PaintPanel
 		
 		utensilSelector = new JComboBox<String>(availableUtensils);
-		utensilSelector.addActionListener(new UtensilSelectorListener(this));
 		//Listen to utensilSelector
 
 		drawPanel.setPreferredSize(new Dimension(500, 500));
@@ -78,7 +75,6 @@ class JavaPaintGui extends JFrame{
 		//Draw a border around the drawing area
 		
 		utensilSelector = new JComboBox<String>(availableUtensils);
-		utensilSelector.addActionListener(new UtensilSelectorListener(this));
 		//Listen to utensilSelector
 
 		resetButton = new JButton("Clear");
@@ -89,9 +85,6 @@ class JavaPaintGui extends JFrame{
 
 		colorChooser = new JColorChooser(Color.black);
 		//Initialize the color chooser on black
-
-		colorChooser.getSelectionModel().addChangeListener(new ColorPickerListener(this));
-		//Listen to the color selector
 
 
 		//sizer = new SizeSelector(drawPanel);
