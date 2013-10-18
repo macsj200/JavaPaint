@@ -8,6 +8,7 @@ public class JavaPaint{
 
 	JavaPaint(){
 		new JavaPaintGui();
-		//Just instantiates a JavaPaintGui object
+		//Instantiate a JavaPaintGui object
+		//Uses default constructor, doesn't specify availibleUtensils
 	}
 }
