@@ -3,6 +3,7 @@ package exceptions;
 @SuppressWarnings("serial")
 public class UnsupportedShapeException extends Exception {
 	private String shapeString = null;
+	//String representation of the shape
 	
 	public UnsupportedShapeException(String shapeString){
 		super();
@@ -11,5 +12,6 @@ public class UnsupportedShapeException extends Exception {
 	
 	public String getShapeString(){
 		return shapeString;
+		//Used for error message
 	}
 }
