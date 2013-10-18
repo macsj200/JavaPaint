@@ -72,7 +72,7 @@ public class MouseDetectorListener implements MouseInputListener{
 		mouseCoordinates[1] = (int) point.getY();
 		CanvasPanel canvasPanel = (CanvasPanel) arg0.getSource();
 		try {
-			if(javaPaintGui.getSelectedUtensil().equals("Eraser")){
+			if(javaPaintGui.getSelectedUtensil().name().equals("ERASER")){
 				canvasPanel.loadUtensil(new Utensil(javaPaintGui.getSelectedUtensil(), 
 						mouseCoordinates, javaPaintGui.getCanvasPanel().getBufferedCanvas().getBackground()));
 				//Load in a new Utensil object to CanvasPanel
