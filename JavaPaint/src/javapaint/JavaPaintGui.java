@@ -28,7 +28,7 @@ class JavaPaintGui extends JFrame{
 
 	private JButton saveButton = null;
 
-	private CanvasPanel drawPanel = null;
+	private CanvasPanel canvasPanel = null;
 	//The panel that is drawn upon
 
 	private MouseDetectorListener mouser = null;
@@ -66,21 +66,21 @@ class JavaPaintGui extends JFrame{
 
 		fileMenu = new JMenu("File");
 
-		drawPanel = new CanvasPanel();
+		canvasPanel = new CanvasPanel();
 		//Instantiate a PaintPanel
 		
 		utensilSelector = new JComboBox<String>(availableUtensils);
 		//Listen to utensilSelector
 
-		drawPanel.setPreferredSize(new Dimension(500, 500));
+		canvasPanel.setPreferredSize(new Dimension(500, 500));
 
 		mouser = new MouseDetectorListener(this);
 
-		drawPanel.addMouseListener(mouser);
-		drawPanel.addMouseMotionListener(mouser);
+		canvasPanel.addMouseListener(mouser);
+		canvasPanel.addMouseMotionListener(mouser);
 		//Add listener for click (MouseListener) and drag (MouseMotionListener)
 
-		drawPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+		canvasPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		//Draw a border around the drawing area
 		
 		utensilSelector = new JComboBox<String>(availableUtensils);
@@ -89,20 +89,20 @@ class JavaPaintGui extends JFrame{
 		resetButton = new JButton("Clear");
 		//Add a reset button that says Clear
 
-		resetButton.addActionListener(new ClearListener(drawPanel));
+		resetButton.addActionListener(new ClearListener(canvasPanel));
 		//Listen to the clear button
 
 		colorChooser = new JColorChooser(Color.black);
 		//Initialize the color chooser on black
 
 
-		//sizer = new SizeSelector(drawPanel);
+		//sizer = new SizeSelector(canvasPanel);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new FlowLayout());
 
 		saveButton = new JButton("Save");
-		saveButton.addActionListener(new SaveListener(this, drawPanel.getBufferedCanvas()));
+		saveButton.addActionListener(new SaveListener(this, canvasPanel.getBufferedCanvas()));
 
 		addComponents();
 		pack();
@@ -118,7 +118,7 @@ class JavaPaintGui extends JFrame{
 	}
 	
 	public CanvasPanel getCanvasPanel(){
-		return drawPanel;
+		return canvasPanel;
 	}
 
 	private void addComponents(){
@@ -131,7 +131,7 @@ class JavaPaintGui extends JFrame{
 		menuBar.add(fileMenu);
 
 		//getContentPane().add(menuBar);
-		getContentPane().add(drawPanel);
+		getContentPane().add(canvasPanel);
 		getContentPane().add(utensilSelector);
 		getContentPane().add(resetButton);
 		getContentPane().add(saveButton);
