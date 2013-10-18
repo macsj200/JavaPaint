@@ -15,13 +15,11 @@ import exceptions.UnsupportedShapeException;
 public class Utensil{
 	private String shapeString = null;
 	private Shape shapeObject = null;
-	private int[] coordinates = null;
 	private Color color = null;
 	
 	public Utensil(String shapeString, int[] coordinates, Color color) throws UnsupportedShapeException{
 		this.color = color;
 		this.shapeString = shapeString;
-		this.coordinates = coordinates;
 		if(shapeString.equals("Oval")){
 			shapeObject = new Ellipse2D.Double(coordinates[0], coordinates[1],
 					11, 11);
