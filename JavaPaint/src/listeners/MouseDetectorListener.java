@@ -75,11 +75,12 @@ public class MouseDetectorListener implements MouseInputListener{
 		CanvasPanel panel = (CanvasPanel) arg0.getSource();
 		try {
 			if(javaPaintGui.getSelectedUtensil().equals("Eraser")){
-				panel.setUtensil(new Utensil(javaPaintGui.getSelectedUtensil(), 
+				panel.loadUtensil(new Utensil(javaPaintGui.getSelectedUtensil(), 
 						mouseCoordinates, javaPaintGui.getCanvasPanel().getBufferedCanvas().getBackground()));
+				//Load in a new Utensil object to CanvasPanel
 			}
 			else{
-				panel.setUtensil(new Utensil(javaPaintGui.getSelectedUtensil(), 
+				panel.loadUtensil(new Utensil(javaPaintGui.getSelectedUtensil(), 
 						mouseCoordinates, javaPaintGui.getSelectedColor()));
 			}
 		} catch (UnsupportedShapeException e) {

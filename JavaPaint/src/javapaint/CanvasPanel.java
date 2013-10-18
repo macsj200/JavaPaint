@@ -23,7 +23,7 @@ public class CanvasPanel extends JPanel{
 				getPreferredSize().height, BufferedImage.TYPE_INT_ARGB);
 	}
 
-	public void setUtensil(Utensil ut){
+	public void loadUtensil(Utensil ut){
 		//Set the current utensil
 		this.ut = ut;
 	}
