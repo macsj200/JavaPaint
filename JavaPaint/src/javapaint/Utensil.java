@@ -39,10 +39,6 @@ public class Utensil{
 		this(shapeString, coordinates, Color.black);
 	}
 	
-	public int[] getCoordinates(){
-		return coordinates;
-	}
-	
 	public void setColor(Color color){
 		this.color = color;
 	}
