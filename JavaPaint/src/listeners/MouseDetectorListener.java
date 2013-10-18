@@ -7,11 +7,12 @@ import java.awt.event.MouseEvent;
 
 import javapaint.CanvasPanel;
 import javapaint.JavaPaintGui;
-import javapaint.UnsupportedShapeException;
 import javapaint.Utensil;
 
 import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputListener;
+
+import exceptions.UnsupportedShapeException;
 
 
 public class MouseDetectorListener implements MouseInputListener{

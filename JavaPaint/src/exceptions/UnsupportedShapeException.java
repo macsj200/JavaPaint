@@ -1,10 +1,10 @@
-package javapaint;
+package exceptions;
 
 @SuppressWarnings("serial")
 public class UnsupportedShapeException extends Exception {
 	private String shape = null;
 	
-	UnsupportedShapeException(String shape){
+	public UnsupportedShapeException(String shape){
 		super();
 		this.shape = shape;
 	}

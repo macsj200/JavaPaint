@@ -10,6 +10,8 @@ import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
+import exceptions.UnsupportedShapeException;
+
 public class Utensil{
 	private String shapeString = null;
 	private Shape shapeObject = null;
