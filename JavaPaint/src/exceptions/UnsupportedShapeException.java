@@ -2,14 +2,14 @@ package exceptions;
 
 @SuppressWarnings("serial")
 public class UnsupportedShapeException extends Exception {
-	private String shape = null;
+	private String shapeString = null;
 	
-	public UnsupportedShapeException(String shape){
+	public UnsupportedShapeException(String shapeString){
 		super();
-		this.shape = shape;
+		this.shapeString = shapeString;
 	}
 	
 	public String getShapeString(){
-		return shape;
+		return shapeString;
 	}
 }
