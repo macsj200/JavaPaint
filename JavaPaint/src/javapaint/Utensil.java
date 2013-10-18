@@ -44,11 +44,6 @@ public class Utensil{
 		}
 	}
 	
-	public Utensil(String shapeString, int[] coordinates) throws UnsupportedShapeException{
-		//Calls primary constructor with default color black
-		this(shapeString, coordinates, Color.black);
-	}
-	
 	public void setColor(Color color){
 		this.color = color;
 	}
