@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class CanvasPanel extends JPanel{
-	private Utensil ut = null;
+	private Utensil utensil = null;
 	//Utensil object
 	//Used to paint stuff
 	
@@ -23,9 +23,9 @@ public class CanvasPanel extends JPanel{
 				getPreferredSize().height, BufferedImage.TYPE_INT_ARGB);
 	}
 
-	public void loadUtensil(Utensil ut){
+	public void loadUtensil(Utensil utensil){
 		//Set the current utensil
-		this.ut = ut;
+		this.utensil = utensil;
 	}
 	
 	public void rerender(){
@@ -42,7 +42,7 @@ public class CanvasPanel extends JPanel{
 
 	public Utensil getUtensil(){
 		//Get the current utensil
-		return ut;
+		return utensil;
 	}
 
 	public void paintComponent(Graphics g){

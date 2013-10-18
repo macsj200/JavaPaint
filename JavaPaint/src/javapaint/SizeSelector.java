@@ -17,7 +17,7 @@ public class SizeSelector extends JPanel{
 	private JSlider slider = null;
 	private JTextField textfield = null;
 	@SuppressWarnings("unused")
-	private Utensil ut = null;
+	private Utensil utensil = null;
 
 	SizeSelector(CanvasPanel p){
 		setLayout(new FlowLayout());
@@ -27,8 +27,8 @@ public class SizeSelector extends JPanel{
 		add(slider);
 	}
 
-	public void setUtensil(Utensil ut){
-		this.ut = ut;
+	public void setUtensil(Utensil utensil){
+		this.utensil = utensil;
 	}
 
 	class SliderListener implements ChangeListener{

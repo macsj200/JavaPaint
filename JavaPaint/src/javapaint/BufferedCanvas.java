@@ -62,9 +62,9 @@ public class BufferedCanvas extends BufferedImage{
 		//Close the graphics object
 	}
 
-	public void addUtensil(Utensil ut){
+	public void addUtensil(Utensil utensil){
 		//Add a utensil to the ArrayList
-		elements.add(ut);
+		elements.add(utensil);
 	}
 
 	public void resetElements() {
