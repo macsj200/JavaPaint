@@ -1,17 +1,19 @@
 package exceptions;
 
+import javapaint.AvailibleUtensils;
+
 @SuppressWarnings("serial")
 public class UnsupportedShapeException extends Exception {
-	private String shapeString = null;
+	private AvailibleUtensils shapeEnum = null;
 	//String representation of the shape
 	
-	public UnsupportedShapeException(String shapeString){
+	public UnsupportedShapeException(AvailibleUtensils shapeEnum){
 		super();
-		this.shapeString = shapeString;
+		this.shapeEnum = shapeEnum;
 	}
 	
-	public String getShapeString(){
-		return shapeString;
+	public AvailibleUtensils getShapeEnum(){
+		return shapeEnum;
 		//Used for error message
 	}
 }

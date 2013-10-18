@@ -17,11 +17,6 @@ import listeners.SaveListener;
 public @SuppressWarnings("serial")
 class JavaPaintGui extends JFrame{
 	
-	private static String[] defaultAvailableUtensils = {"Oval", "Rectangle", "Eraser"};
-	//The default available utensils
-	//A list of the stuff that's implemented so far
-	//Only used in parameterless constructor
-	
 	private JButton saveButton = null;
 	//JButton that opens save dialog
 
@@ -31,11 +26,7 @@ class JavaPaintGui extends JFrame{
 	private MouseDetectorListener mouser = null;
 	//The mouse listener (listens for clicks and drags)
 
-	private String[] availableUtensils = null;
-	//Array of available utensils
-	//Used to populate utensilSelector
-
-	private JComboBox<String> utensilSelector = null;
+	private JComboBox<AvailibleUtensils> utensilSelector = null;
 	//Combo Box to select utensil
 	//Populated by availibleUtensils
 
@@ -44,29 +35,17 @@ class JavaPaintGui extends JFrame{
 
 	private JColorChooser colorChooser = null;
 	//Color selector for utensil
-	
-	JavaPaintGui(){
-		//Parameter-less constructor
-		//Calls primary constructor with default parameters
-		
-		this(defaultAvailableUtensils);
-	}
 
-	JavaPaintGui(String[] availibleUtensils){
+	JavaPaintGui(){
 		//Primary constructor
 		//Parameter specifies what to populate UtensilSelector with
 		
 		super("JavaPaint");
 		//Title the window
 
-		this.availableUtensils = availibleUtensils;
-
 		canvasPanel = new CanvasPanel();
 		//Instantiate a CanvasPanel
 		//Container for BufferedCanvas
-		
-		utensilSelector = new JComboBox<String>(availableUtensils);
-		//Listen to utensilSelector
 
 		canvasPanel.setPreferredSize(new Dimension(500, 500));
 
@@ -80,7 +59,7 @@ class JavaPaintGui extends JFrame{
 		canvasPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		//Draw a border around the drawing area
 		
-		utensilSelector = new JComboBox<String>(availableUtensils);
+		utensilSelector = new JComboBox<AvailibleUtensils>(AvailibleUtensils.values());
 		//Create a JComboBox to pick utensils
 
 		resetButton = new JButton("Clear");
@@ -103,9 +82,9 @@ class JavaPaintGui extends JFrame{
 		setVisible(true);
 	}
 	
-	public String getSelectedUtensil(){
+	public AvailibleUtensils getSelectedUtensil(){
 		//Get currently selected element from utensilSelector
-		return (String) utensilSelector.getSelectedItem();
+		return (AvailibleUtensils) utensilSelector.getSelectedItem();
 	}
 	
 	public Color getSelectedColor(){

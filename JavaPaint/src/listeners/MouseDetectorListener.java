@@ -83,7 +83,7 @@ public class MouseDetectorListener implements MouseInputListener{
 			}
 		} catch (UnsupportedShapeException e) {
 			//Print an error message if shape isn't supported
-			System.err.println("Shape " + e.getShapeString() + " not supported yet!");
+			System.err.println("Shape " + e.getShapeEnum().toString() + " not supported yet!");
 		}
 
 		canvasPanel.rerender();

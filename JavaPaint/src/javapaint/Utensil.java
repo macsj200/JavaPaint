@@ -5,6 +5,7 @@ package javapaint;
  * 
  */
 import java.awt.Color;
+
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
@@ -12,7 +13,8 @@ import java.awt.geom.Rectangle2D;
 import exceptions.UnsupportedShapeException;
 
 public class Utensil{
-	private String shapeString = null;
+	
+	private AvailibleUtensils shapeEnum = null;
 	//String representation of the shape object
 	
 	private Shape shapeObject = null;
@@ -21,26 +23,26 @@ public class Utensil{
 	private Color color = null;
 	//Color of the shape
 	
-	public Utensil(String shapeString, int[] coordinates, Color color) throws UnsupportedShapeException{
+	public Utensil(AvailibleUtensils shapeEnum, int[] coordinates, Color color) throws UnsupportedShapeException{
 		this.color = color;
-		this.shapeString = shapeString;
-		switch (shapeString){
+		this.shapeEnum = shapeEnum;
+		switch (shapeEnum){
 		//Create a Shape primitive based on the selected Utensil
-		case "Oval":
+		case OVAL:
 			shapeObject = new Ellipse2D.Double(coordinates[0], coordinates[1],
 					11, 11);
 			break;
-		case "Rectangle":
+		case RECTANGLE:
 			shapeObject = new Rectangle2D.Double(coordinates[0], coordinates[1],
 					11, 11);
 			break;
-		case "Eraser":
+		case ERASER:
 				shapeObject = new Rectangle2D.Double(coordinates[0], coordinates[1],
 						20, 20);
 				break;
 		default:
 			//If a shape isn't here it's not supported so throw an exception
-			throw new UnsupportedShapeException(shapeString);
+			throw new UnsupportedShapeException(shapeEnum);
 		}
 	}
 	
@@ -58,6 +60,6 @@ public class Utensil{
 	
 	public String toString(){
 		//Get string representation of shape
-		return shapeString;
+		return shapeEnum.toString();
 	}
 }
