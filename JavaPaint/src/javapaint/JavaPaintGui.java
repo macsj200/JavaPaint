@@ -19,13 +19,9 @@ import listeners.SaveListener;
 
 public @SuppressWarnings("serial")
 class JavaPaintGui extends JFrame{
-	private JMenuBar menuBar = null;
-	private JMenu fileMenu = null;
 	
 	private static String[] defaultAvailibleUtensils = {"Oval", "Rectangle", "Eraser"};
-
-	private JMenuItem[] fileMenuItems = null;
-
+	
 	private JButton saveButton = null;
 
 	private CanvasPanel canvasPanel = null;
@@ -58,13 +54,6 @@ class JavaPaintGui extends JFrame{
 		//Title the window
 
 		this.availableUtensils = availibleUtensils;
-		
-		menuBar = new JMenuBar();
-
-		fileMenuItems = new JMenuItem[1];
-		fileMenuItems[0] = new JMenuItem("Save");
-
-		fileMenu = new JMenu("File");
 
 		canvasPanel = new CanvasPanel();
 		//Instantiate a PaintPanel
@@ -124,18 +113,11 @@ class JavaPaintGui extends JFrame{
 	private void addComponents(){
 		//Add all of the components :)
 		//Note the use of getContentPane()
-		for(int i = 0; i < fileMenuItems.length; i++){
-			fileMenu.add(fileMenuItems[i]);
-		}
 
-		menuBar.add(fileMenu);
-
-		//getContentPane().add(menuBar);
 		getContentPane().add(canvasPanel);
 		getContentPane().add(utensilSelector);
 		getContentPane().add(resetButton);
 		getContentPane().add(saveButton);
 		getContentPane().add(colorChooser);
-		//getContentPane().add(sizer);
 	}
 }
