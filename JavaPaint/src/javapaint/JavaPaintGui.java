@@ -26,7 +26,7 @@ class JavaPaintGui extends JFrame{
 	private MouseDetectorListener mouser = null;
 	//The mouse listener (listens for clicks and drags)
 
-	private JComboBox<AvailibleUtensils> utensilSelector = null;
+	private JComboBox<AvailableUtensils> utensilSelector = null;
 	//Combo Box to select utensil
 	//Populated by availibleUtensils
 
@@ -59,7 +59,7 @@ class JavaPaintGui extends JFrame{
 		canvasPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		//Draw a border around the drawing area
 		
-		utensilSelector = new JComboBox<AvailibleUtensils>(AvailibleUtensils.values());
+		utensilSelector = new JComboBox<AvailableUtensils>(AvailableUtensils.values());
 		//Create a JComboBox to pick utensils
 
 		resetButton = new JButton("Clear");
@@ -82,9 +82,9 @@ class JavaPaintGui extends JFrame{
 		setVisible(true);
 	}
 	
-	public AvailibleUtensils getSelectedUtensil(){
+	public AvailableUtensils getSelectedUtensil(){
 		//Get currently selected element from utensilSelector
-		return (AvailibleUtensils) utensilSelector.getSelectedItem();
+		return (AvailableUtensils) utensilSelector.getSelectedItem();
 	}
 	
 	public Color getSelectedColor(){

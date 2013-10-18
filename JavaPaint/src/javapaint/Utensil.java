@@ -14,7 +14,7 @@ import exceptions.UnsupportedShapeException;
 
 public class Utensil{
 	
-	private AvailibleUtensils shapeEnum = null;
+	private AvailableUtensils shapeEnum = null;
 	//String representation of the shape object
 	
 	private Shape shapeObject = null;
@@ -23,7 +23,7 @@ public class Utensil{
 	private Color color = null;
 	//Color of the shape
 	
-	public Utensil(AvailibleUtensils shapeEnum, int[] coordinates, Color color) throws UnsupportedShapeException{
+	public Utensil(AvailableUtensils shapeEnum, int[] coordinates, Color color) throws UnsupportedShapeException{
 		this.color = color;
 		this.shapeEnum = shapeEnum;
 		switch (shapeEnum){

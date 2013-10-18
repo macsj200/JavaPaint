@@ -1,5 +1,5 @@
 package javapaint;
 
-public enum AvailibleUtensils {
+public enum AvailableUtensils {
 	OVAL, RECTANGLE, ERASER
 }
