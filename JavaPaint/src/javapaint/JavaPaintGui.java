@@ -17,7 +17,7 @@ import listeners.SaveListener;
 public @SuppressWarnings("serial")
 class JavaPaintGui extends JFrame{
 	
-	private static String[] defaultAvailibleUtensils = {"Oval", "Rectangle", "Eraser"};
+	private static String[] defaultAvailableUtensils = {"Oval", "Rectangle", "Eraser"};
 	//The default available utensils
 	//A list of the stuff that's implemented so far
 	//Only used in parameterless constructor
@@ -49,7 +49,7 @@ class JavaPaintGui extends JFrame{
 		//Parameter-less constructor
 		//Calls primary constructor with default parameters
 		
-		this(defaultAvailibleUtensils);
+		this(defaultAvailableUtensils);
 	}
 
 	JavaPaintGui(String[] availibleUtensils){
