@@ -17,7 +17,11 @@ import exceptions.UnsupportedShapeException;
 
 public class MouseDetectorListener implements MouseInputListener{
 	private int[] mouseCoordinates = null;
+	//Array to store mouse coordinates of event
+	//{x, y}
+	
 	private JavaPaintGui javaPaintGui = null;
+	//Reference to JavaPaintGui
 
 	public MouseDetectorListener(JavaPaintGui javaPaintGui){
 		this.javaPaintGui = javaPaintGui;
@@ -43,6 +47,7 @@ public class MouseDetectorListener implements MouseInputListener{
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		mouseIt(arg0);
+		//Call mouseIt()
 	}
 
 	@Override
@@ -60,6 +65,7 @@ public class MouseDetectorListener implements MouseInputListener{
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
 		mouseIt(arg0);
+		//Call mouseIt()
 	}
 
 	public int[] getMouseCoordinates(){
@@ -84,7 +90,7 @@ public class MouseDetectorListener implements MouseInputListener{
 						mouseCoordinates, javaPaintGui.getSelectedColor()));
 			}
 		} catch (UnsupportedShapeException e) {
-			// TODO Auto-generated catch block
+			//Print an error message if shape isn't supported
 			System.err.println("Shape " + e.getShapeString() + " not supported yet!");
 		}
 		panel.getBufferedCanvas().addUtensil(panel.getUtensil());
