@@ -21,6 +21,8 @@ public @SuppressWarnings("serial")
 class JavaPaintGui extends JFrame{
 	private JMenuBar menuBar = null;
 	private JMenu fileMenu = null;
+	
+	private static String[] defaultAvailibleUtensils = {"Oval", "Rectangle", "Eraser"};
 
 	private JMenuItem[] fileMenuItems = null;
 
@@ -32,7 +34,8 @@ class JavaPaintGui extends JFrame{
 	private MouseDetectorListener mouser = null;
 	//The mouse listener (listens for clicks and drags)
 
-	private String[] availableUtensils = {"Oval", "Rectangle", "Eraser"};
+	//private String[] availableUtensils = {"Oval", "Rectangle", "Eraser"};
+	private String[] availableUtensils = null;
 	//Array of available utensils (currently unnecessary)
 	//Used to populate utensilSelector
 
@@ -45,11 +48,17 @@ class JavaPaintGui extends JFrame{
 
 	private JColorChooser colorChooser = null;
 	//Color selector for utensil
-
+	
 	JavaPaintGui(){
+		this(defaultAvailibleUtensils);
+	}
+
+	JavaPaintGui(String[] availibleUtensils){
 		super("JavaPaint");
 		//Title the window
 
+		this.availableUtensils = availibleUtensils;
+		
 		menuBar = new JMenuBar();
 
 		fileMenuItems = new JMenuItem[1];
