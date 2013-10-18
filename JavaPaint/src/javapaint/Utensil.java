@@ -20,15 +20,20 @@ public class Utensil{
 	public Utensil(String shapeString, int[] coordinates, Color color) throws UnsupportedShapeException{
 		this.color = color;
 		this.shapeString = shapeString;
-		if(shapeString.equals("Oval")){
+		switch (shapeString){
+		case "Oval":
 			shapeObject = new Ellipse2D.Double(coordinates[0], coordinates[1],
 					11, 11);
-		}
-		else if (shapeString.equals("Rectangle")){
+			break;
+		case "Rectangle":
 			shapeObject = new Rectangle2D.Double(coordinates[0], coordinates[1],
 					11, 11);
-		}
-		else{
+			break;
+		case "Eraser":
+				shapeObject = new Rectangle2D.Double(coordinates[0], coordinates[1],
+						20, 20);
+				break;
+		default:
 			throw new UnsupportedShapeException(shapeString);
 		}
 	}

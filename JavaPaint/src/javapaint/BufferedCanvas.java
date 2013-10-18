@@ -15,13 +15,16 @@ public class BufferedCanvas extends BufferedImage{
 	//Probably a better way to do this
 
 	Graphics2D g2 = null;
+	
+	private Color background = null;
 
 	public BufferedCanvas(int width, int height, int imageType) {
 		super(width, height, imageType);
 		elements = new ArrayList<Utensil>();
 
+		background = Color.white;
 		g2 = createGraphics();
-		g2.setBackground(Color.white);
+		g2.setBackground(background);
 		threadedRender();
 	}
 
@@ -32,7 +35,11 @@ public class BufferedCanvas extends BufferedImage{
 			}
 		});
 	}
-
+	
+	public Color getBackground(){
+		return background;
+	}
+	
 	private void singleThreadRender(){
 		Graphics2D g2d = (Graphics2D) g2.create();
 		//Make a new context
