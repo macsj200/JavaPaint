@@ -70,23 +70,23 @@ public class MouseDetectorListener implements MouseInputListener{
 		SwingUtilities.convertPointFromScreen(point, arg0.getComponent());
 		mouseCoordinates[0] = (int) point.getX();
 		mouseCoordinates[1] = (int) point.getY();
-		CanvasPanel panel = (CanvasPanel) arg0.getSource();
+		CanvasPanel canvasPanel = (CanvasPanel) arg0.getSource();
 		try {
 			if(javaPaintGui.getSelectedUtensil().equals("Eraser")){
-				panel.loadUtensil(new Utensil(javaPaintGui.getSelectedUtensil(), 
+				canvasPanel.loadUtensil(new Utensil(javaPaintGui.getSelectedUtensil(), 
 						mouseCoordinates, javaPaintGui.getCanvasPanel().getBufferedCanvas().getBackground()));
 				//Load in a new Utensil object to CanvasPanel
 			}
 			else{
-				panel.loadUtensil(new Utensil(javaPaintGui.getSelectedUtensil(), 
+				canvasPanel.loadUtensil(new Utensil(javaPaintGui.getSelectedUtensil(), 
 						mouseCoordinates, javaPaintGui.getSelectedColor()));
 			}
 		} catch (UnsupportedShapeException e) {
 			//Print an error message if shape isn't supported
 			System.err.println("Shape " + e.getShapeString() + " not supported yet!");
 		}
-		panel.getBufferedCanvas().addUtensil(panel.getUtensil());
+		canvasPanel.getBufferedCanvas().addUtensil(canvasPanel.getUtensil());
 
-		panel.rerender();
+		canvasPanel.rerender();
 	}
 }
