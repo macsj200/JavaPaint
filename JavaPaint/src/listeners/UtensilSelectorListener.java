@@ -17,9 +17,8 @@ public class UtensilSelectorListener implements ActionListener{
 		@SuppressWarnings("unchecked")
 		JComboBox<String> cb = (JComboBox<String>) arg0.getSource();
         String selected = (String)cb.getSelectedItem();
-        int[] coordinates = {-1,-1};
 		javaPaintGui.getCanvasPanel()
-			.setUtensil(new Utensil(selected, coordinates, javaPaintGui.getSelectedColor()));
+			.setUtensil(new Utensil(selected, null, javaPaintGui.getSelectedColor()));
 	}
 
 }

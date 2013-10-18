@@ -20,8 +20,6 @@ public class MouseDetectorListener implements MouseInputListener{
 	public MouseDetectorListener(JavaPaintGui javaPaintGui){
 		this.javaPaintGui = javaPaintGui;
 		mouseCoordinates = new int[2];
-		mouseCoordinates[0] = -1;
-		mouseCoordinates[1] = -1;
 	}
 
 	@Override

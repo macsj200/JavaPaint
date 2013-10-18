@@ -21,9 +21,8 @@ public class ColorPickerListener implements ChangeListener{
 	}
 
 	public void setColor(Color c){
-		int[] coordinates = {-1, -1};
 		javaPaintGui.getCanvasPanel().setUtensil(new Utensil(javaPaintGui.getSelectedUtensil(), 
-				coordinates, javaPaintGui.getSelectedColor()));
+				null, javaPaintGui.getSelectedColor()));
 		javaPaintGui.getCanvasPanel().getBufferedCanvas().addUtensil(javaPaintGui.getCanvasPanel().getUtensil());
 	}
 

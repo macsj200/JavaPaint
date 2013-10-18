@@ -48,10 +48,8 @@ public class BufferedCanvas extends BufferedImage{
 			g2d.setColor(elements.get(i).getColor());
 			//Set the current brush color
 
-			if(elements.get(i).getCoordinates()[0] != -1){
-				g2d.fill(elements.get(i).getShape());
-				//Fill a Shape object
-			}
+			g2d.fill(elements.get(i).getShape());
+			//Fill a Shape object
 		}
 		g2d.dispose();
 		//Close the graphics object
