@@ -14,8 +14,10 @@ import utensils.AvailableUtensils;
 import utensils.UtensilFactory;
 
 import listeners.ClearListener;
+import listeners.ColorPickerListener;
 import listeners.MouseDetectorListener;
 import listeners.SaveListener;
+import listeners.UtensilSelectorListener;
 
 public @SuppressWarnings("serial")
 class JavaPaintGui extends JFrame{
@@ -72,7 +74,9 @@ class JavaPaintGui extends JFrame{
 		
 		utensilSelector = new JComboBox<AvailableUtensils>(AvailableUtensils.values());
 		//Create a JComboBox to pick utensils
-
+		
+		utensilSelector.addActionListener(new UtensilSelectorListener(styleSource));
+		
 		resetButton = new JButton("Clear");
 		//Add a reset button that says Clear
 
@@ -81,6 +85,8 @@ class JavaPaintGui extends JFrame{
 
 		colorChooser = new JColorChooser(Color.black);
 		//Initialize the color chooser on black
+		
+		colorChooser.getSelectionModel().addChangeListener(new ColorPickerListener(styleSource));
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new FlowLayout());
