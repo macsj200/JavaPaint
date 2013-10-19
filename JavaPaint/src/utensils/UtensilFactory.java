@@ -42,7 +42,7 @@ public class UtensilFactory {
 		case ERASER:
 				shapeObject = new Rectangle2D.Double(eventCoordinates[0], eventCoordinates[1],
 						20, 20);
-				retUtensil = new EraserUtensil(shapeObject, color);
+				retUtensil = new EraserUtensil(shapeObject, Color.white);
 				break;
 		default:
 			//If a shape isn't here it's not supported so throw an exception
