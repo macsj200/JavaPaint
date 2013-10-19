@@ -7,10 +7,11 @@ import java.awt.event.MouseEvent;
 
 import javapaint.CanvasPanel;
 import javapaint.JavaPaintGui;
-import javapaint.Utensil;
 
 import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputListener;
+
+import utensils.Utensil;
 
 import exceptions.UnsupportedShapeException;
 

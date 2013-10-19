@@ -1,4 +1,4 @@
-package javapaint;
+package utensils;
 /*
  * Wrapper interface for Shape class
  * An attempt at polymorphism (I think)

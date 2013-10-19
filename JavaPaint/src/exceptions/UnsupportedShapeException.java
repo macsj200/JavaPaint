@@ -1,6 +1,6 @@
 package exceptions;
 
-import javapaint.AvailableUtensils;
+import utensils.AvailableUtensils;
 
 @SuppressWarnings("serial")
 public class UnsupportedShapeException extends Exception {

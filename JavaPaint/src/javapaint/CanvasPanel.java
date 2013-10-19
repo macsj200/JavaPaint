@@ -7,6 +7,8 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
+import utensils.Utensil;
+
 @SuppressWarnings("serial")
 public class CanvasPanel extends JPanel{
 	private Utensil utensil = null;

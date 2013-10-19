@@ -10,6 +10,8 @@ import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
+import utensils.AvailableUtensils;
+
 import listeners.ClearListener;
 import listeners.MouseDetectorListener;
 import listeners.SaveListener;
