@@ -12,38 +12,16 @@ import java.awt.geom.Rectangle2D;
 
 import exceptions.UnsupportedShapeException;
 
-public class Utensil{
-	
-	private AvailableUtensils shapeEnum = null;
-	//String representation of the shape object
-	
+public abstract class Utensil{
 	private Shape shapeObject = null;
 	//Java-supplied shape primitive
 	
 	private Color color = null;
 	//Color of the shape
 	
-	public Utensil(AvailableUtensils shapeEnum, int[] coordinates, Color color) throws UnsupportedShapeException{
+	public Utensil(Shape shapeObject, Color color) throws UnsupportedShapeException{
 		this.color = color;
-		this.shapeEnum = shapeEnum;
-		switch (shapeEnum){
-		//Create a Shape primitive based on the selected Utensil
-		case OVAL:
-			shapeObject = new Ellipse2D.Double(coordinates[0], coordinates[1],
-					11, 11);
-			break;
-		case RECTANGLE:
-			shapeObject = new Rectangle2D.Double(coordinates[0], coordinates[1],
-					11, 11);
-			break;
-		case ERASER:
-				shapeObject = new Rectangle2D.Double(coordinates[0], coordinates[1],
-						20, 20);
-				break;
-		default:
-			//If a shape isn't here it's not supported so throw an exception
-			throw new UnsupportedShapeException(shapeEnum);
-		}
+		this.shapeObject = shapeObject;
 	}
 	
 	public void setColor(Color color){
@@ -56,10 +34,5 @@ public class Utensil{
 	
 	public Shape getShape(){
 		return shapeObject;
-	}
-	
-	public String toString(){
-		//Get string representation of shape
-		return shapeEnum.toString();
 	}
 }

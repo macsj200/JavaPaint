@@ -11,6 +11,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
 import utensils.AvailableUtensils;
+import utensils.UtensilFactory;
 
 import listeners.ClearListener;
 import listeners.MouseDetectorListener;
@@ -21,6 +22,8 @@ class JavaPaintGui extends JFrame{
 	
 	private JButton saveButton = null;
 	//JButton that opens save dialog
+	
+	private UtensilFactory utensilFactory = null;
 
 	private CanvasPanel canvasPanel = null;
 	//The panel that is drawn upon
@@ -51,7 +54,7 @@ class JavaPaintGui extends JFrame{
 
 		canvasPanel.setPreferredSize(new Dimension(500, 500));
 
-		mouser = new MouseDetectorListener(this);
+		mouser = new MouseDetectorListener(new UtensilFactory(this));
 		//Create a new MouseDetectorListener
 
 		canvasPanel.addMouseListener(mouser);

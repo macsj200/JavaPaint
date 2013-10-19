@@ -12,6 +12,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputListener;
 
 import utensils.Utensil;
+import utensils.UtensilFactory;
 
 import exceptions.UnsupportedShapeException;
 
@@ -20,12 +21,14 @@ public class MouseDetectorListener implements MouseInputListener{
 	private int[] mouseCoordinates = null;
 	//Array to store mouse coordinates of event
 	//{x, y}
-	
+
 	private JavaPaintGui javaPaintGui = null;
 	//Reference to JavaPaintGui
 
-	public MouseDetectorListener(JavaPaintGui javaPaintGui){
-		this.javaPaintGui = javaPaintGui;
+	private UtensilFactory utensilFactory = null;
+
+	public MouseDetectorListener(UtensilFactory utensilFactory){
+		this.utensilFactory = utensilFactory;
 		mouseCoordinates = new int[2];
 	}
 
@@ -73,15 +76,7 @@ public class MouseDetectorListener implements MouseInputListener{
 		mouseCoordinates[1] = (int) point.getY();
 		CanvasPanel canvasPanel = (CanvasPanel) arg0.getSource();
 		try {
-			if(javaPaintGui.getSelectedUtensil().name().equals("ERASER")){
-				canvasPanel.loadUtensil(new Utensil(javaPaintGui.getSelectedUtensil(), 
-						mouseCoordinates, javaPaintGui.getCanvasPanel().getBufferedCanvas().getBackground()));
-				//Load in a new Utensil object to CanvasPanel
-			}
-			else{
-				canvasPanel.loadUtensil(new Utensil(javaPaintGui.getSelectedUtensil(), 
-						mouseCoordinates, javaPaintGui.getSelectedColor()));
-			}
+			canvasPanel.loadUtensil(utensilFactory.buildUtensil(mouseCoordinates));
 		} catch (UnsupportedShapeException e) {
 			//Print an error message if shape isn't supported
 			System.err.println("Shape " + e.getShapeEnum().toString() + " not supported yet!");
