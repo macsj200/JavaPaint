@@ -25,6 +25,8 @@ class JavaPaintGui extends JFrame{
 	
 	private UtensilFactory utensilFactory = null;
 
+	private StyleSource styleSource = null;
+	
 	private CanvasPanel canvasPanel = null;
 	//The panel that is drawn upon
 
@@ -47,6 +49,10 @@ class JavaPaintGui extends JFrame{
 		
 		super("JavaPaint");
 		//Title the window
+		
+		styleSource = new StyleSource();
+		styleSource.setSelectedColor(Color.black);
+		styleSource.setSelectedUtensil(AvailableUtensils.OVAL);
 
 		canvasPanel = new CanvasPanel();
 		//Instantiate a CanvasPanel
