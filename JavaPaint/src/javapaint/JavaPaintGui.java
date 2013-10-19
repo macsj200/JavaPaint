@@ -62,7 +62,7 @@ class JavaPaintGui extends JFrame{
 
 		canvasPanel.setPreferredSize(new Dimension(500, 500));
 
-		mouser = new MouseDetectorListener(new UtensilFactory(this));
+		mouser = new MouseDetectorListener(new UtensilFactory(styleSource));
 		//Create a new MouseDetectorListener
 
 		canvasPanel.addMouseListener(mouser);
