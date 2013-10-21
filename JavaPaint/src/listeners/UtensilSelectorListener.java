@@ -17,7 +17,6 @@ public class UtensilSelectorListener implements ActionListener {
 		this.styleSource = styleSource;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		styleSource.setSelectedUtensil((AvailableUtensils)
