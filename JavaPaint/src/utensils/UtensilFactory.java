@@ -54,4 +54,16 @@ public class UtensilFactory {
 	private AvailableUtensils getCurrentShapeEnum(){
 		return styleSource.getSelectedUtensil();
 	}
+	
+	public boolean buildingLine(){
+		return styleSource.buildingLine();
+	}
+	
+	public void startLine(){
+		styleSource.startLine();
+	}
+	
+	public void endLine(){
+		styleSource.endLine();
+	}
 }
