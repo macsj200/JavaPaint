@@ -35,7 +35,7 @@ class JavaPaintGui extends JFrame{
 	private MouseDetectorListener mouser = null;
 	//The mouse listener (listens for clicks and drags)
 
-	private JComboBox<AvailableUtensils> utensilSelector = null;
+	private JComboBox utensilSelector = null;
 	//Combo Box to select utensil
 	//Populated by availibleUtensils
 
@@ -72,7 +72,7 @@ class JavaPaintGui extends JFrame{
 		canvasPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		//Draw a border around the drawing area
 		
-		utensilSelector = new JComboBox<AvailableUtensils>(AvailableUtensils.values());
+		utensilSelector = new JComboBox(AvailableUtensils.values());
 		//Create a JComboBox to pick utensils
 		
 		utensilSelector.addActionListener(new UtensilSelectorListener(styleSource));

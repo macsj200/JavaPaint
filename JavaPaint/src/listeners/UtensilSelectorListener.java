@@ -21,7 +21,7 @@ public class UtensilSelectorListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		styleSource.setSelectedUtensil((AvailableUtensils)
-				((JComboBox<AvailableUtensils>) arg0.getSource()).getSelectedItem());
+				((JComboBox) arg0.getSource()).getSelectedItem());
 	}
 
 }
