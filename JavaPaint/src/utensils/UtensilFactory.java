@@ -40,6 +40,10 @@ public class UtensilFactory {
 						20, 20);
 				retUtensil = new EraserUtensil(shapeObject, Color.white);
 				break;
+		case LINE:
+			System.out.println("I'm working on it calm down");
+			throw new UnsupportedShapeException(styleSource.getSelectedUtensil());
+			//break;
 		default:
 			//If a shape isn't here it's not supported so throw an exception
 			throw new UnsupportedShapeException(styleSource.getSelectedUtensil());
