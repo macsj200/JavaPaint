@@ -7,6 +7,7 @@ import utensils.AvailableUtensils;
 public class StyleSource {
 	private Color selectedColor = null;
 	private AvailableUtensils selectedUtensil = null;
+	private boolean buildingLine = false;
 	public StyleSource() {
 		
 	}
@@ -21,6 +22,18 @@ public class StyleSource {
 	}
 	public void setSelectedUtensil(AvailableUtensils selectedUtensil) {
 		this.selectedUtensil = selectedUtensil;
+	}
+	
+	public boolean buildingLine(){
+		return buildingLine;
+	}
+	
+	public void startLine(){
+		buildingLine = true;
+	}
+	
+	public void endLine(){
+		buildingLine = false;
 	}
 	
 }
