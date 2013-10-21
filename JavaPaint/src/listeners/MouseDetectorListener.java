@@ -60,8 +60,10 @@ public class MouseDetectorListener implements MouseInputListener{
 
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
-		mouseIt(arg0);
-		//Call mouseIt()
+		if(!utensilFactory.buildingLine()){
+			mouseIt(arg0);
+			//Call mouseIt() if not building line
+		}
 	}
 
 	public int[] getMouseCoordinates(){
