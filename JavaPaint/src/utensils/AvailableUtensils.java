@@ -1,5 +1,5 @@
 package utensils;
 
 public enum AvailableUtensils {
-	OVAL, RECTANGLE, ERASER
+	OVAL, RECTANGLE, ERASER, LINE
 }

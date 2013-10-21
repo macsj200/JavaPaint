@@ -20,8 +20,15 @@ public class StyleSource {
 	public AvailableUtensils getSelectedUtensil() {
 		return selectedUtensil;
 	}
+	
 	public void setSelectedUtensil(AvailableUtensils selectedUtensil) {
 		this.selectedUtensil = selectedUtensil;
+		if(selectedUtensil.equals(AvailableUtensils.LINE)){
+			startLine();
+		}
+		else{
+			endLine();
+		}
 	}
 	
 	public boolean buildingLine(){
