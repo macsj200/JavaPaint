@@ -25,8 +25,6 @@ class JavaPaintGui extends JFrame{
 	private JButton saveButton = null;
 	//JButton that opens save dialog
 	
-	private UtensilFactory utensilFactory = null;
-
 	private StyleSource styleSource = null;
 	
 	private CanvasPanel canvasPanel = null;
