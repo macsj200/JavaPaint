@@ -22,6 +22,9 @@ public class MouseDetectorListener implements MouseInputListener{
 	//Array to store mouse coordinates of event
 	//{x, y}
 
+	private int[] startPoint = null;
+	private int[] endPoint = null;
+
 	private JavaPaintGui javaPaintGui = null;
 	//Reference to JavaPaintGui
 
@@ -78,7 +81,9 @@ public class MouseDetectorListener implements MouseInputListener{
 		mouseCoordinates[1] = (int) point.getY();
 		CanvasPanel canvasPanel = (CanvasPanel) arg0.getSource();
 		try {
-			canvasPanel.loadUtensil(utensilFactory.buildUtensil(mouseCoordinates));
+			if(!utensilFactory.buildingLine()){
+				canvasPanel.loadUtensil(utensilFactory.buildUtensil(mouseCoordinates));
+			}
 		} catch (UnsupportedShapeException e) {
 			//Print an error message if shape isn't supported
 			System.err.println("Shape " + e.getShapeEnum().toString() + " not supported yet!");
