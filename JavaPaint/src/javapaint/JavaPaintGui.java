@@ -52,7 +52,7 @@ class JavaPaintGui extends JFrame{
 		canvasPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		//Draw a border around the drawing area
 		
-		String[] shapes = {"Oval", "Rectangle"};
+		String[] shapes = {"Oval", "Rectangle", "Line"};
 		
 		setUtensilSelector(new JComboBox(shapes));
 		//TODO fix this

@@ -7,6 +7,7 @@ import java.awt.PointerInfo;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Ellipse2D.Double;
+import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 
 import javapaint.BufferedCanvas;
@@ -29,6 +30,9 @@ public class MouseDetectorListener implements MouseInputListener{
 	
 	private JavaPaintGui javaPaintGui = null;
 	//Reference to JavaPaintGui
+	
+	private Point prevClick = null;
+	private Point currentClick = null;
 
 	public MouseDetectorListener(JavaPaintGui javaPaintGui){
 		this.javaPaintGui = javaPaintGui;
@@ -50,6 +54,8 @@ public class MouseDetectorListener implements MouseInputListener{
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
+		
+		
 		mouseIt(arg0);
 		//Call mouseIt()
 	}
@@ -69,19 +75,27 @@ public class MouseDetectorListener implements MouseInputListener{
 
 	private void mouseIt(MouseEvent arg0){
 		PointerInfo a = MouseInfo.getPointerInfo();
-		Point point = new Point(a.getLocation());
-		SwingUtilities.convertPointFromScreen(point, arg0.getComponent());
+		
+		prevClick = currentClick;
+		
+		currentClick = new Point(a.getLocation());
+		SwingUtilities.convertPointFromScreen(currentClick, arg0.getComponent());
 		
 		ShapeWrapper shape = null;
 		
 		String selected = ((String)shapePicker.getSelectedItem());
 		
 		if(selected.equals("Oval")){
-			shape = new ShapeWrapper(new Ellipse2D.Double(point.getX(),point.getY(),15,15), Color.black);
+			shape = new ShapeWrapper(new Ellipse2D.Double(currentClick.getX(),currentClick.getY(),15,15), Color.black);
 		} else if (selected.equals("Rectangle")){
-			shape = new ShapeWrapper(new Rectangle2D.Double(point.getX(),point.getY(),15,15), Color.black);
+			shape = new ShapeWrapper(new Rectangle2D.Double(currentClick.getX(),currentClick.getY(),15,15), Color.black);
+		} else if (selected.equals("Line") && prevClick != null){
+			shape = new ShapeWrapper(new Line2D.Double(prevClick.getX(), prevClick.getY(), 
+						currentClick.getX(), currentClick.getY()), Color.black);
 		}
 		
-		canvas.addShapeWrapper(shape);
+		if(shape != null){
+			canvas.addShapeWrapper(shape);
+		}
 	}
 }
