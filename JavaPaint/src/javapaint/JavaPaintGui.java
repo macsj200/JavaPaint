@@ -49,17 +49,12 @@ class JavaPaintGui extends JFrame{
 
 		canvasPanel.setPreferredSize(new Dimension(500, 500));
 
-		mouser = new MouseDetectorListener();
-		//Create a new MouseDetectorListener
-
-		canvasPanel.addMouseListener(mouser);
-		canvasPanel.addMouseMotionListener(mouser);
-		//Add listener for click (MouseListener) and drag (MouseMotionListener)
-
 		canvasPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		//Draw a border around the drawing area
 		
-		utensilSelector = new JComboBox();
+		String[] shapes = {"Oval", "Rectangle"};
+		
+		setUtensilSelector(new JComboBox(shapes));
 		//TODO fix this
 		//Create a JComboBox to pick utensils
 		
@@ -79,6 +74,14 @@ class JavaPaintGui extends JFrame{
 		saveButton.addActionListener(new SaveListener(this, canvasPanel.getBufferedCanvas()));
 
 		addComponents();
+		
+		mouser = new MouseDetectorListener(this);
+		//Create a new MouseDetectorListener
+
+		canvasPanel.addMouseListener(mouser);
+		canvasPanel.addMouseMotionListener(mouser);
+		//Add listener for click (MouseListener) and drag (MouseMotionListener)
+		
 		pack();
 		setVisible(true);
 	}
@@ -98,9 +101,17 @@ class JavaPaintGui extends JFrame{
 		//Note the use of getContentPane()
 
 		getContentPane().add(canvasPanel);
-		getContentPane().add(utensilSelector);
+		getContentPane().add(getUtensilSelector());
 		getContentPane().add(resetButton);
 		getContentPane().add(saveButton);
 		getContentPane().add(colorChooser);
+	}
+
+	public JComboBox getUtensilSelector() {
+		return utensilSelector;
+	}
+
+	public void setUtensilSelector(JComboBox utensilSelector) {
+		this.utensilSelector = utensilSelector;
 	}
 }

@@ -6,12 +6,15 @@ import java.awt.Point;
 import java.awt.PointerInfo;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Ellipse2D.Double;
+import java.awt.geom.Rectangle2D;
 
 import javapaint.BufferedCanvas;
 import javapaint.CanvasPanel;
 import javapaint.JavaPaintGui;
 import javapaint.ShapeWrapper;
 
+import javax.swing.JComboBox;
 import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputListener;
 
@@ -21,10 +24,16 @@ public class MouseDetectorListener implements MouseInputListener{
 	private int[] startPoint = null;
 	private int[] endPoint = null;
 
+	private BufferedCanvas canvas = null;
+	private JComboBox shapePicker = null;
+	
 	private JavaPaintGui javaPaintGui = null;
 	//Reference to JavaPaintGui
 
-	public MouseDetectorListener(){
+	public MouseDetectorListener(JavaPaintGui javaPaintGui){
+		this.javaPaintGui = javaPaintGui;
+		canvas = javaPaintGui.getCanvasPanel().getBufferedCanvas();
+		shapePicker = javaPaintGui.getUtensilSelector();
 	}
 
 	@Override
@@ -62,8 +71,17 @@ public class MouseDetectorListener implements MouseInputListener{
 		PointerInfo a = MouseInfo.getPointerInfo();
 		Point point = new Point(a.getLocation());
 		SwingUtilities.convertPointFromScreen(point, arg0.getComponent());
-		BufferedCanvas canvas = ((CanvasPanel) arg0.getSource()).getBufferedCanvas();
-
-		canvas.addShapeWrapper(new ShapeWrapper(new Ellipse2D.Double(point.getX(),point.getY(),15,15), Color.black));
+		
+		ShapeWrapper shape = null;
+		
+		String selected = ((String)shapePicker.getSelectedItem());
+		
+		if(selected.equals("Oval")){
+			shape = new ShapeWrapper(new Ellipse2D.Double(point.getX(),point.getY(),15,15), Color.black);
+		} else if (selected.equals("Rectangle")){
+			shape = new ShapeWrapper(new Rectangle2D.Double(point.getX(),point.getY(),15,15), Color.black);
+		}
+		
+		canvas.addShapeWrapper(shape);
 	}
 }
