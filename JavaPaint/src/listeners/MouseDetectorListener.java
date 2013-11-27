@@ -17,6 +17,7 @@ import javapaint.ShapeWrapper;
 
 import javax.swing.JComboBox;
 import javax.swing.SwingUtilities;
+import javax.swing.colorchooser.ColorSelectionModel;
 import javax.swing.event.MouseInputListener;
 
 
@@ -35,11 +36,14 @@ public class MouseDetectorListener implements MouseInputListener{
 	private Point currentClick = null;
 	
 	private ShapeWrapper shape = null;
+	
+	private ColorSelectionModel colorPicker = null;
 
 	public MouseDetectorListener(JavaPaintGui javaPaintGui){
 		this.javaPaintGui = javaPaintGui;
 		canvas = javaPaintGui.getCanvasPanel().getBufferedCanvas();
 		shapePicker = javaPaintGui.getUtensilSelector();
+		colorPicker = javaPaintGui.getColorChooser().getSelectionModel();
 	}
 
 	@Override
@@ -86,12 +90,12 @@ public class MouseDetectorListener implements MouseInputListener{
 		String selected = ((String)shapePicker.getSelectedItem());
 		
 		if(selected.equals("Oval")){
-			shape = new ShapeWrapper(new Ellipse2D.Double(currentClick.getX(),currentClick.getY(),15,15), Color.black);
+			shape = new ShapeWrapper(new Ellipse2D.Double(currentClick.getX(),currentClick.getY(),15,15), colorPicker.getSelectedColor());
 		} else if (selected.equals("Rectangle")){
-			shape = new ShapeWrapper(new Rectangle2D.Double(currentClick.getX(),currentClick.getY(),15,15), Color.black);
+			shape = new ShapeWrapper(new Rectangle2D.Double(currentClick.getX(),currentClick.getY(),15,15), colorPicker.getSelectedColor());
 		} else if (selected.equals("Line") && prevClick != null){
 			shape = new ShapeWrapper(new Line2D.Double(prevClick.getX(), prevClick.getY(), 
-						currentClick.getX(), currentClick.getY()), Color.black);
+						currentClick.getX(), currentClick.getY()), colorPicker.getSelectedColor());
 		}
 		
 		if(shape != null){

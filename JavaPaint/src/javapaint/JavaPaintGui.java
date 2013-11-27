@@ -64,7 +64,7 @@ class JavaPaintGui extends JFrame{
 		resetButton.addActionListener(new ClearListener(canvasPanel));
 		//Listen to the clear button
 
-		colorChooser = new JColorChooser(Color.black);
+		setColorChooser(new JColorChooser(Color.black));
 		//Initialize the color chooser on black
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -88,7 +88,7 @@ class JavaPaintGui extends JFrame{
 	
 	public Color getSelectedColor(){
 		//Get currently selected color from the color selector
-		return colorChooser.getColor();
+		return getColorChooser().getColor();
 	}
 	
 	public CanvasPanel getCanvasPanel(){
@@ -104,7 +104,7 @@ class JavaPaintGui extends JFrame{
 		getContentPane().add(getUtensilSelector());
 		getContentPane().add(resetButton);
 		getContentPane().add(saveButton);
-		getContentPane().add(colorChooser);
+		getContentPane().add(getColorChooser());
 	}
 
 	public JComboBox getUtensilSelector() {
@@ -113,5 +113,13 @@ class JavaPaintGui extends JFrame{
 
 	public void setUtensilSelector(JComboBox utensilSelector) {
 		this.utensilSelector = utensilSelector;
+	}
+
+	public JColorChooser getColorChooser() {
+		return colorChooser;
+	}
+
+	public void setColorChooser(JColorChooser colorChooser) {
+		this.colorChooser = colorChooser;
 	}
 }
