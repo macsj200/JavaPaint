@@ -9,14 +9,22 @@ public class ShapeWrapper{
 	private Shape shape = null;
 	private Color color = null;
 	
-	public ShapeWrapper(Shape shape, Color color){
-		this.setShape(shape);
-		this.setColor(color);
+	private static final boolean defaultFilled = true;
+	
+	private boolean filled;
+	
+	public ShapeWrapper(Shape shape, Color color, boolean filled){
+		this.shape = shape;
+		this.color = color;
+		this.filled = filled;
 	}
 	
 	public ShapeWrapper(Shape shape){
-		this.setShape(shape);
-		this.setColor(defaultColor);
+		this(shape, defaultColor, defaultFilled);
+	}
+	
+	public ShapeWrapper(Shape shape, Color color){
+		this(shape, color, defaultFilled);
 	}
 
 	public Shape getShape() {
@@ -33,5 +41,13 @@ public class ShapeWrapper{
 
 	public void setColor(Color color) {
 		this.color = color;
+	}
+
+	public boolean isFilled() {
+		return filled;
+	}
+
+	public void setFilled(boolean filled) {
+		this.filled = filled;
 	}
 }

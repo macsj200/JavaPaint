@@ -95,7 +95,7 @@ public class MouseDetectorListener implements MouseInputListener{
 			shape = new ShapeWrapper(new Rectangle2D.Double(currentClick.getX(),currentClick.getY(),15,15), colorPicker.getSelectedColor());
 		} else if (selected.equals("Line") && prevClick != null){
 			shape = new ShapeWrapper(new Line2D.Double(prevClick.getX(), prevClick.getY(), 
-						currentClick.getX(), currentClick.getY()), colorPicker.getSelectedColor());
+						currentClick.getX(), currentClick.getY()), colorPicker.getSelectedColor(), false);
 		}
 		
 		if(shape != null){

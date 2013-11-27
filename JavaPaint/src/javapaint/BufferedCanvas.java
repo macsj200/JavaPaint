@@ -17,41 +17,41 @@ public class BufferedCanvas extends BufferedImage{
 	//Graphics2D object used for drawing primitives
 	//This is the primary object, don't use directly for drawing
 	//Instead clone and dispose of clone
-	
+
 	private Color background = null;
 	//Background of canvas
-	
+
 	private CanvasPanel containerPanel = null;
 
 	public BufferedCanvas(CanvasPanel containerPanel, int width, int height, int imageType) {
 		//Primary constructor
 		//IDK what imageType is, it's required for BufferedImage
-		
+
 		super(width, height, imageType);
 		//Call BufferedImage constructor
-		
+
 		this.containerPanel = containerPanel;
-		
+
 		elements = new ArrayList<ShapeWrapper>();
 		//Create the ArrayList to hold ShapeWrapper objects
 
 		background = Color.white;
 		//Set background to white by default
 		//Retrieved to set color of eraser
-		
+
 		g2 = createGraphics();
 		//Create a Graphics2D object for the BufferedImage
-		
+
 		g2.setBackground(background);
 		//Set the background of the BufferedImage
-		
+
 		threadedRender();
 		//Do initial rendering work
 	}
 
 	public void threadedRender(){
 		//Wrapper, just invokes singleThreadRender with invokeLater
-		
+
 		SwingUtilities.invokeLater(new Runnable(){
 			//Necessary framework for Swing concurrency
 			public void run(){
@@ -60,14 +60,14 @@ public class BufferedCanvas extends BufferedImage{
 			}
 		});
 	}
-	
+
 	public Color getBackground(){
 		//Get the background color
 		//Used for eraser color
-		
+
 		return background;
 	}
-	
+
 	private void singleThreadRender(){
 		Graphics2D g2d = (Graphics2D) g2.create();
 		//Make a new context so we can dispose when finished
@@ -76,31 +76,35 @@ public class BufferedCanvas extends BufferedImage{
 			//If elements is empty clear the canvas
 			g2d.clearRect(0, 0, getWidth(), getHeight());
 		}
-		
+
 		ShapeWrapper s;
 
 		for(int i = 0; i < elements.size(); i = i + 1){
 			//Iterate through the ArrayList and paint every element
 			//GOT to be a better (more efficient) way to do this
-			
+
 			s = elements.get(i);
 
 			g2d.setColor(s.getColor());
 			//Set the current brush color
 
-			g2d.draw(s.getShape());
-			//Fill a Shape object
+			if(s.isFilled()){
+				g2d.fill(s.getShape());
+			} else if (!s.isFilled()){
+				g2d.draw(s.getShape());
+				//Fill a Shape object
+			}
 		}
 		g2d.dispose();
 		//Close the graphics object
-		
+
 		containerPanel.rerender();
 	}
 
 	public void addShapeWrapper(ShapeWrapper shapeWrapper){
 		//Add a shapeWrapper to the ArrayList
 		elements.add(shapeWrapper);
-		
+
 		threadedRender();
 	}
 
