@@ -33,6 +33,8 @@ public class MouseDetectorListener implements MouseInputListener{
 	
 	private Point prevClick = null;
 	private Point currentClick = null;
+	
+	private ShapeWrapper shape = null;
 
 	public MouseDetectorListener(JavaPaintGui javaPaintGui){
 		this.javaPaintGui = javaPaintGui;
@@ -80,8 +82,6 @@ public class MouseDetectorListener implements MouseInputListener{
 		
 		currentClick = new Point(a.getLocation());
 		SwingUtilities.convertPointFromScreen(currentClick, arg0.getComponent());
-		
-		ShapeWrapper shape = null;
 		
 		String selected = ((String)shapePicker.getSelectedItem());
 		
