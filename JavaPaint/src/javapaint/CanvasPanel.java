@@ -7,37 +7,38 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-import utensils.Utensil;
-
 @SuppressWarnings("serial")
 public class CanvasPanel extends JPanel{
-	private Utensil utensil = null;
-	//Currently loaded Utensil object
+	private ShapeWrapper shapeWrapper = null;
+	//Currently loaded ShapeWrapper object
 	
 	private BufferedCanvas bufferedCanvas = null;
 	//Use a buffered image to render stuff
+	
+	private static final int defaultWidth = 500;
+	private static final int defaultHeight = 500;
+	
+	private int width;
+	private int height;
 
 	CanvasPanel(){
-		this.setPreferredSize(new Dimension(500, 500));
-		bufferedCanvas = new BufferedCanvas(getPreferredSize().width, 
-				getPreferredSize().height, BufferedImage.TYPE_INT_ARGB);
-		//Make a new BufferedImage for to render stuff
-	}
-
-	public void loadUtensil(Utensil utensil){
-		//Load in a new utensil
-		setUtensil(utensil);
-		bufferedCanvas.addUtensil(utensil);
+		this(defaultWidth, defaultHeight);
 	}
 	
-	private void setUtensil(Utensil utensil){
-		this.utensil = utensil;
+	CanvasPanel(int width, int height){
+		this.width = width;
+		this.height = height;
+		
+		setPreferredSize(new Dimension(width, height));
+		
+		bufferedCanvas = new BufferedCanvas(this, width, 
+				height, BufferedImage.TYPE_INT_ARGB);
+		//Make a new BufferedImage for to render stuff
 	}
 	
 	public void rerender(){
 		//Redraw everything
 		
-		bufferedCanvas.threadedRender();
 		revalidate();
 		repaint();
 	}
@@ -51,9 +52,9 @@ public class CanvasPanel extends JPanel{
 		repaint();
 	}
 
-	public Utensil getUtensil(){
-		//Get the current utensil
-		return utensil;
+	public ShapeWrapper getShapeWrapper(){
+		//Get the current shapeWrapper
+		return shapeWrapper;
 	}
 
 	public void paintComponent(Graphics g){

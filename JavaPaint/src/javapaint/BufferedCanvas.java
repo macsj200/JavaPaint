@@ -6,13 +6,11 @@ import java.util.ArrayList;
 
 import javax.swing.SwingUtilities;
 
-import utensils.Utensil;
-
 public class BufferedCanvas extends BufferedImage{
 	//BufferedCanvas
 
-	private ArrayList<Utensil> elements = null;
-	//ArrayList of Utensil objects
+	private ArrayList<ShapeWrapper> elements = null;
+	//ArrayList of ShapeWrapper objects
 	//Holds everything on the screen
 
 	Graphics2D g2 = null;
@@ -22,16 +20,20 @@ public class BufferedCanvas extends BufferedImage{
 	
 	private Color background = null;
 	//Background of canvas
+	
+	private CanvasPanel containerPanel = null;
 
-	public BufferedCanvas(int width, int height, int imageType) {
+	public BufferedCanvas(CanvasPanel containerPanel, int width, int height, int imageType) {
 		//Primary constructor
 		//IDK what imageType is, it's required for BufferedImage
 		
 		super(width, height, imageType);
 		//Call BufferedImage constructor
 		
-		elements = new ArrayList<Utensil>();
-		//Create the ArrayList to hold Utensil objects
+		this.containerPanel = containerPanel;
+		
+		elements = new ArrayList<ShapeWrapper>();
+		//Create the ArrayList to hold ShapeWrapper objects
 
 		background = Color.white;
 		//Set background to white by default
@@ -74,24 +76,32 @@ public class BufferedCanvas extends BufferedImage{
 			//If elements is empty clear the canvas
 			g2d.clearRect(0, 0, getWidth(), getHeight());
 		}
+		
+		ShapeWrapper s;
 
 		for(int i = 0; i < elements.size(); i = i + 1){
 			//Iterate through the ArrayList and paint every element
 			//GOT to be a better (more efficient) way to do this
+			
+			s = elements.get(i);
 
-			g2d.setColor(elements.get(i).getColor());
+			g2d.setColor(s.getColor());
 			//Set the current brush color
 
-			g2d.fill(elements.get(i).getShape());
+			g2d.fill(s.getShape());
 			//Fill a Shape object
 		}
 		g2d.dispose();
 		//Close the graphics object
+		
+		containerPanel.rerender();
 	}
 
-	public void addUtensil(Utensil utensil){
-		//Add a utensil to the ArrayList
-		elements.add(utensil);
+	public void addShapeWrapper(ShapeWrapper shapeWrapper){
+		//Add a shapeWrapper to the ArrayList
+		elements.add(shapeWrapper);
+		
+		threadedRender();
 	}
 
 	public void resetElements() {

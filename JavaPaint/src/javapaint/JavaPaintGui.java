@@ -10,22 +10,15 @@ import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
-import utensils.AvailableUtensils;
-import utensils.UtensilFactory;
-
 import listeners.ClearListener;
-import listeners.ColorPickerListener;
 import listeners.MouseDetectorListener;
 import listeners.SaveListener;
-import listeners.UtensilSelectorListener;
 
 public @SuppressWarnings("serial")
 class JavaPaintGui extends JFrame{
 	
 	private JButton saveButton = null;
 	//JButton that opens save dialog
-	
-	private StyleSource styleSource = null;
 	
 	private CanvasPanel canvasPanel = null;
 	//The panel that is drawn upon
@@ -49,10 +42,6 @@ class JavaPaintGui extends JFrame{
 		
 		super("JavaPaint");
 		//Title the window
-		
-		styleSource = new StyleSource();
-		styleSource.setSelectedColor(Color.black);
-		styleSource.setSelectedUtensil(AvailableUtensils.OVAL);
 
 		canvasPanel = new CanvasPanel();
 		//Instantiate a CanvasPanel
@@ -60,7 +49,7 @@ class JavaPaintGui extends JFrame{
 
 		canvasPanel.setPreferredSize(new Dimension(500, 500));
 
-		mouser = new MouseDetectorListener(new UtensilFactory(styleSource));
+		mouser = new MouseDetectorListener();
 		//Create a new MouseDetectorListener
 
 		canvasPanel.addMouseListener(mouser);
@@ -70,10 +59,9 @@ class JavaPaintGui extends JFrame{
 		canvasPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		//Draw a border around the drawing area
 		
-		utensilSelector = new JComboBox(AvailableUtensils.values());
+		utensilSelector = new JComboBox();
+		//TODO fix this
 		//Create a JComboBox to pick utensils
-		
-		utensilSelector.addActionListener(new UtensilSelectorListener(styleSource));
 		
 		resetButton = new JButton("Clear");
 		//Add a reset button that says Clear
@@ -83,8 +71,6 @@ class JavaPaintGui extends JFrame{
 
 		colorChooser = new JColorChooser(Color.black);
 		//Initialize the color chooser on black
-		
-		colorChooser.getSelectionModel().addChangeListener(new ColorPickerListener(styleSource));
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new FlowLayout());
@@ -95,11 +81,6 @@ class JavaPaintGui extends JFrame{
 		addComponents();
 		pack();
 		setVisible(true);
-	}
-	
-	public AvailableUtensils getSelectedUtensil(){
-		//Get currently selected element from utensilSelector
-		return (AvailableUtensils) utensilSelector.getSelectedItem();
 	}
 	
 	public Color getSelectedColor(){

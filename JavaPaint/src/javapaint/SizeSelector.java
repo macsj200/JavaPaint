@@ -7,8 +7,6 @@ import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
-import utensils.Utensil;
 /*
  * I don't want to bother commenting this right now
  * 
@@ -19,7 +17,6 @@ public class SizeSelector extends JPanel{
 	private JSlider slider = null;
 	private JTextField textfield = null;
 	@SuppressWarnings("unused")
-	private Utensil utensil = null;
 
 	SizeSelector(CanvasPanel p){
 		setLayout(new FlowLayout());
@@ -27,10 +24,6 @@ public class SizeSelector extends JPanel{
 		textfield = new JTextField();
 		add(textfield);
 		add(slider);
-	}
-
-	public void setUtensil(Utensil utensil){
-		this.utensil = utensil;
 	}
 
 	class SliderListener implements ChangeListener{

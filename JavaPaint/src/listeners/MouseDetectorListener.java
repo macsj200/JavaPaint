@@ -1,26 +1,22 @@
 package listeners;
 
+import java.awt.Color;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.PointerInfo;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Ellipse2D;
 
+import javapaint.BufferedCanvas;
 import javapaint.CanvasPanel;
 import javapaint.JavaPaintGui;
+import javapaint.ShapeWrapper;
 
 import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputListener;
 
-import utensils.Utensil;
-import utensils.UtensilFactory;
-
-import exceptions.UnsupportedShapeException;
-
 
 public class MouseDetectorListener implements MouseInputListener{
-	private int[] mouseCoordinates = null;
-	//Array to store mouse coordinates of event
-	//{x, y}
 
 	private int[] startPoint = null;
 	private int[] endPoint = null;
@@ -28,11 +24,7 @@ public class MouseDetectorListener implements MouseInputListener{
 	private JavaPaintGui javaPaintGui = null;
 	//Reference to JavaPaintGui
 
-	private UtensilFactory utensilFactory = null;
-
-	public MouseDetectorListener(UtensilFactory utensilFactory){
-		this.utensilFactory = utensilFactory;
-		mouseCoordinates = new int[2];
+	public MouseDetectorListener(){
 	}
 
 	@Override
@@ -63,32 +55,15 @@ public class MouseDetectorListener implements MouseInputListener{
 
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
-		if(!utensilFactory.buildingLine()){
-			mouseIt(arg0);
-			//Call mouseIt() if not building line
-		}
-	}
-
-	public int[] getMouseCoordinates(){
-		return mouseCoordinates;
+		mouseIt(arg0);
 	}
 
 	private void mouseIt(MouseEvent arg0){
 		PointerInfo a = MouseInfo.getPointerInfo();
 		Point point = new Point(a.getLocation());
 		SwingUtilities.convertPointFromScreen(point, arg0.getComponent());
-		mouseCoordinates[0] = (int) point.getX();
-		mouseCoordinates[1] = (int) point.getY();
-		CanvasPanel canvasPanel = (CanvasPanel) arg0.getSource();
-		try {
-			if(!utensilFactory.buildingLine()){
-				canvasPanel.loadUtensil(utensilFactory.buildUtensil(mouseCoordinates));
-			}
-		} catch (UnsupportedShapeException e) {
-			//Print an error message if shape isn't supported
-			System.err.println("Shape " + e.getShapeEnum().toString() + " not supported yet!");
-		}
+		BufferedCanvas canvas = ((CanvasPanel) arg0.getSource()).getBufferedCanvas();
 
-		canvasPanel.rerender();
+		canvas.addShapeWrapper(new ShapeWrapper(new Ellipse2D.Double(point.getX(),point.getY(),15,15), Color.black));
 	}
 }
