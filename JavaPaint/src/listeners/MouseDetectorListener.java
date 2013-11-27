@@ -101,5 +101,7 @@ public class MouseDetectorListener implements MouseInputListener{
 		if(shape != null){
 			canvas.addShapeWrapper(shape);
 		}
+		
+		shape = null;
 	}
 }
