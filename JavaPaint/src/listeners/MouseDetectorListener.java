@@ -23,20 +23,17 @@ import javax.swing.event.MouseInputListener;
 
 public class MouseDetectorListener implements MouseInputListener{
 
-	private int[] startPoint = null;
-	private int[] endPoint = null;
+	private Point startPoint = null;
+	private Point endPoint = null;
 
 	private BufferedCanvas canvas = null;
 	private JComboBox shapePicker = null;
-	
+
 	private JavaPaintGui javaPaintGui = null;
 	//Reference to JavaPaintGui
-	
-	private Point prevClick = null;
-	private Point currentClick = null;
-	
+
 	private ShapeWrapper shape = null;
-	
+
 	private ColorSelectionModel colorPicker = null;
 
 	public MouseDetectorListener(JavaPaintGui javaPaintGui){
@@ -60,14 +57,20 @@ public class MouseDetectorListener implements MouseInputListener{
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		
-		
-		mouseIt(arg0);
-		//Call mouseIt()
+		if(!((String) shapePicker.getSelectedItem()).equals("Line")){
+			parseSingleShape(arg0);
+			//Call mouseIt()
+		} else{
+			startPoint = getClickCoordinates(arg0);
+		}
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
+		if(!((String) shapePicker.getSelectedItem()).equals("Line")){
+		} else{
+			endPoint = getClickCoordinates(arg0);
+		}
 	}
 
 	@Override
@@ -76,32 +79,37 @@ public class MouseDetectorListener implements MouseInputListener{
 
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
-		mouseIt(arg0);
+		if(!((String) shapePicker.getSelectedItem()).equals("Line")){
+			parseSingleShape(arg0);
+			//Call mouseIt()
+		}
 	}
 
-	private void mouseIt(MouseEvent arg0){
+	private Point getClickCoordinates(MouseEvent arg0){
 		PointerInfo a = MouseInfo.getPointerInfo();
-		
-		prevClick = currentClick;
+
+		Point currentClick = null;
 		
 		currentClick = new Point(a.getLocation());
 		SwingUtilities.convertPointFromScreen(currentClick, arg0.getComponent());
-		
+		return currentClick;
+	}
+
+	private void parseSingleShape(MouseEvent arg0){
+		Point currentClick = getClickCoordinates(arg0);
+
 		String selected = ((String)shapePicker.getSelectedItem());
-		
+
 		if(selected.equals("Oval")){
 			shape = new ShapeWrapper(new Ellipse2D.Double(currentClick.getX(),currentClick.getY(),15,15), colorPicker.getSelectedColor());
 		} else if (selected.equals("Rectangle")){
 			shape = new ShapeWrapper(new Rectangle2D.Double(currentClick.getX(),currentClick.getY(),15,15), colorPicker.getSelectedColor());
-		} else if (selected.equals("Line") && prevClick != null){
-			shape = new ShapeWrapper(new Line2D.Double(prevClick.getX(), prevClick.getY(), 
-						currentClick.getX(), currentClick.getY()), colorPicker.getSelectedColor(), false);
 		}
-		
+
 		if(shape != null){
 			canvas.addShapeWrapper(shape);
 		}
-		
+
 		shape = null;
 	}
 }
