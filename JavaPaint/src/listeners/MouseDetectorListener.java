@@ -70,6 +70,7 @@ public class MouseDetectorListener implements MouseInputListener{
 		if(!((String) shapePicker.getSelectedItem()).equals("Line")){
 		} else{
 			endPoint = getClickCoordinates(arg0);
+			canvas.addShapeWrapper(new ShapeWrapper(new Line2D.Double(startPoint.getX(), startPoint.getY(), endPoint.getX(), endPoint.getY()),colorPicker.getSelectedColor(), false));
 		}
 	}
 
